@@ -993,11 +993,12 @@ Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi q
       
       <guid>/posts-list/</guid>
       <description>Liste des différents writeups que vous pourrez retrouver ici
-Try Hack Me wonderland.thm (medium) dogcat.thm (medium) madeyes-castle.thm (medium) Hack The Box none
+Try Hack Me mr-robot-ctf.thm (medium) wonderland.thm (medium) dogcat.thm (medium) madeyes-castle.thm (medium) Hack The Box none
 Other NahamCon CTF 2022 Writeups </description>
       <content>&lt;p&gt;Liste des différents writeups que vous pourrez retrouver ici&lt;/p&gt;
 &lt;h1 id=&#34;try-hack-me&#34;&gt;Try Hack Me&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;/posts/thm-mrrobot&#34;&gt;mr-robot-ctf.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-wonderland&#34;&gt;wonderland.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-dogcat&#34;&gt;dogcat.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-madeyes&#34;&gt;madeyes-castle.thm&lt;/a&gt; (medium)&lt;/li&gt;
