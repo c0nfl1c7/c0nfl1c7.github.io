@@ -9,6 +9,105 @@
     <copyright>/home/rami_malek</copyright>
     <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>TryHackMe - Mr. Robot CTF - Medium</title>
+      <link>/posts/thm-mrrobot/</link>
+      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thm-mrrobot/</guid>
+      <description>mrrobot.thm Difficulty: Medium OS: Linux Description: Based on the Mr. Robot show, can you root this box? Link: https://tryhackme.com/room/mrrobot Note La room était super, super lente… peut être à cause du OpenVPN mais en tout cas la partie bruteforce m’a pris une éternité
+Sinon la room est sympa, assez facile mais c’est toujours cool
+Recon ⌨️ nmap -A mrrobot.thm
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-24 13:25 CET Nmap scan report for mrrobot.</description>
+      <content>&lt;h1 id=&#34;mrrobotthm&#34;&gt;mrrobot.thm&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Difficulty: Medium&lt;/li&gt;
+&lt;li&gt;OS: Linux&lt;/li&gt;
+&lt;li&gt;Description: &lt;code&gt;Based on the Mr. Robot show, can you root this box?&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Link: &lt;a href=&#34;https://tryhackme.com/room/mrrobot&#34;&gt;https://tryhackme.com/room/mrrobot&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;note&#34;&gt;Note&lt;/h1&gt;
+&lt;p&gt;La room était super, super lente… peut être à cause du OpenVPN mais en tout cas la partie bruteforce m’a pris une éternité&lt;/p&gt;
+&lt;p&gt;Sinon la room est sympa, assez facile mais c’est toujours cool&lt;/p&gt;
+&lt;h1 id=&#34;recon&#34;&gt;Recon&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;⌨️ nmap -A mrrobot.thm&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-24 13:25 CET
+Nmap scan report for mrrobot.thm (10.10.80.7)
+Host is up (0.13s latency).
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE VERSION
+22/tcp  closed ssh
+80/tcp  open   http    Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn&amp;#39;t have a title (text/html).
+443/tcp open   ssl/ssl Apache httpd (SSL-only mode)
+|_http-server-header: Apache
+|_http-title: 400 Bad Request
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Rien de vraiment intéressant, on voit juste que le port ssh est fermé, donc si on a un mot de passe, on pourra pas se ssh avec&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ dirb http://mrrobot.thm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442303-522d288a-34de-407f-9e03-2e2eec7c1e1b.png&#34; alt=&#34;2022-12-24-133417_914x681_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Pendant que le dirb tournait, je suis allé voir dans le /robots.txt, qui nous indique deux fichiers: key-1-of-3.txt et fsocity.dic&lt;/p&gt;
+&lt;p&gt;Le premier fichier est le premier flag, donc on peux directement aller le voir par le site&lt;/p&gt;
+&lt;p&gt;Pour le deuxième, c’est un dictionnaire qu’on va pouvoir utiliser pour bruteforce un form de login&lt;/p&gt;
+&lt;p&gt;En se rendant sur /0, on voit que le site est un wordpress, et qu’il a une page de login: /wp-login&lt;/p&gt;
+&lt;h1 id=&#34;brute-force-du-wp-login&#34;&gt;Brute-force du /wp-login&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442308-50799358-cd18-4017-a323-92ca6d79a3fe.png&#34; alt=&#34;2022-12-24-132859_1888x1030_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;En essayant de connecter avec les identifiants admin:admin, on voit qu’il nous dit que l’username est invalide, on peut donc utiliser ce message d’erreur pour bruteforce le username avec hydra&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442316-6d0d85fd-89de-4652-b5bc-7232483dd6d6.png&#34; alt=&#34;2022-12-24-134445_384x97_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Avant ça, on capture la requête avec burp pour voir comment le formulaire envoie les informations de login&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442320-3f1860b2-0e91-469c-99e8-54d210c9e2f2.png&#34; alt=&#34;2022-12-24-134314_275x114_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Il utilise log et pwd, on peut donc lancer hydra avec ces informations&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ hydra -L fsocity.dic -p 1337 mrrobot.thm http-post-form &#39;/wp-login.php:log=^USER^&amp;amp;pwd=^PASS^&amp;amp;wp-submit=Log+In:Invalid username’&lt;/code&gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;-L permet de lui préciser que le nom d’utilisateur est une liste de plusieurs noms d’utilisateurs. On lui donne ensuite comme password “1337” puisqu’on ne connaît pas le bon password.
+Enfin, on lui indique de regarder si le message “Invalid Username” est présent dans la réponse&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442340-4eb2a3c0-d054-41be-a4c2-e9aad47dc208.png&#34; alt=&#34;2022-12-24-134534_1883x211_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Il nous trouve un username: &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;Elliot&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;Maintenant qu’on connaît l’username, on peut réutiliser hydra pour bruteforce le mot de passe&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ hydra -l Elliot -P fsocity.dic mrrobot.thm http-post-form &#39;/wp-login.php:log=^USER^&amp;amp;pwd=^PASS^&amp;amp;wp-submit=Log+In:The password you’&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On fait la même chose qu’avant, mais on lui indique de chercher “The password you”&lt;/p&gt;
+&lt;p&gt;(cette partie a pris beaucoup de temps)&lt;/p&gt;
+&lt;p&gt;Le password d’&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;Elliot&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt; est donc &lt;strong&gt;ER28-0652&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;On peux maintenant se connecter au panel admin du wordpress&lt;/p&gt;
+&lt;h1 id=&#34;foothold&#34;&gt;Foothold&lt;/h1&gt;
+&lt;p&gt;En se balandant un peu dessus, on voit qu’on peut éditer les thèmes, dont les pages php tu thème actif&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442355-60213406-4298-489b-be66-fd18817a6974.png&#34; alt=&#34;2022-12-24-150147_421x357_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442358-df03b6d1-11ca-4356-b62e-2be49d06a411.png&#34; alt=&#34;2022-12-24-150227_220x779_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On va donc éditer la 404 dans laquelle on va mettre un reverse-shell en php&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442363-cc029cb3-ca6f-4a59-93f0-ee87f7ce53d7.png&#34; alt=&#34;2022-12-24-150350_1735x793_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On enregistre, puis on se rend sur &lt;a href=&#34;http://mrrobot.thm/1337leet&#34;&gt;http://mrrobot.thm/1337leet&lt;/a&gt; (une page qui n’existe pas, donc qui appellera la 404.php)&lt;/p&gt;
+&lt;p&gt;Avant de faire ça, on lance le netcat sur notre machine&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ nc -lvnp 9001&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442377-05b0688f-649b-4b7d-b566-d314e86804e7.png&#34; alt=&#34;2022-12-24-150523_1083x508_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On est connectés à la machine, on va voir dans le /home pour savoir si on peut trouver un flag&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442386-1860ac8a-b35a-4c29-b5dc-fd6b3c7eef34.png&#34; alt=&#34;2022-12-24-150617_498x297_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Il y a bel et bien un flag, mais on a pas la permission puisqu’on est pas dans notre home&lt;/p&gt;
+&lt;h1 id=&#34;lateral-move-daemon---robot&#34;&gt;Lateral move (daemon -&amp;gt; robot)&lt;/h1&gt;
+&lt;p&gt;Dans le password.raw-md5, on trouve un hash en raw-md5, qu’on peut mettre dans &lt;a href=&#34;http://crackstation.net&#34;&gt;http://crackstation.net&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442389-9809ef09-e061-4200-836e-5594d7b9e991.png&#34; alt=&#34;2022-12-24-151445_1033x68_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Maintenant qu’on a le password de &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;robot&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;, on doit utiliser su pour changer d’utilisateur (on ne peut toujours pas se ssh puisque le port est fermé)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442392-c52add64-545a-40d1-9b92-115904cf5c0b.png&#34; alt=&#34;2022-12-24-151551_475x126_scrot&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;privesc&#34;&gt;Privesc&lt;/h1&gt;
+&lt;p&gt;On peut maintenant chercher des vecteurs de privesc, on commence par&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ sudo -l&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;mais ça ne retourne rien. On tente de lister les files avec le setuid bit&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;⌨️ find directory -user root -perm -4000 -exec ls -ldb {} \; &amp;gt;/tmp/results&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;mais ça ne retourne rien non plus&lt;/p&gt;
+&lt;p&gt;A partir de là on pourrait lancer linpeas, mais on va d’abord aller regarder les binaires installés sur la machine&lt;/p&gt;
+&lt;p&gt;En se baladant dans &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;/usr/local/bin&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;, on voit que &lt;strong&gt;&lt;strong&gt;&lt;strong&gt;&lt;strong&gt;nmap&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt;&lt;/strong&gt; est installé sur la machine&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442444-0cce9098-e426-46ca-adc7-de0f6912bf71.png&#34; alt=&#34;2022-12-24-152210_353x70_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;En allant sur GTFObins, on voit que nmap peut être utilisé pour privesc&lt;/p&gt;
+&lt;p&gt;→ &lt;a href=&#34;https://gtfobins.github.io/gtfobins/nmap/#shell&#34;&gt;https://gtfobins.github.io/gtfobins/nmap/#shell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/209442471-9ad79416-f768-46cd-9d63-d72c8d26ad28.png&#34; alt=&#34;2022-12-24-152255_726x251_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On est maintenant root, plus qu’à cat le dernier flag dans /root&lt;/p&gt;
+&lt;p&gt;gg!&lt;/p&gt;
+</content>
+    </item>
+    
+    <item>
       <title>TryHackMe - Wonderland - Medium</title>
       <link>/posts/thm-wonderland/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
