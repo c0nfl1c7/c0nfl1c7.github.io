@@ -3,40 +3,35 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>/</loc>
-    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/</loc>
-    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+    <loc>/post/</loc>
+    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/thm-ultratech/</loc>
-    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+    <loc>/post/thm-anonymous/</loc>
+    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/thm-anonymous/</loc>
+    <loc>/post/thm-mrrobot/</loc>
+    <lastmod>2022-12-26T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/thm-wonderland/</loc>
+    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/thm-dogcat/</loc>
     <lastmod>2022-12-24T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/posts/thm-mrrobot/</loc>
-    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/thm-wonderland/</loc>
-    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/nahamcon2022/</loc>
-    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/thm-dogcat/</loc>
-    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/thm-madeyes/</loc>
-    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/posts/hello/</loc>
-    <lastmod>2022-12-21T00:00:00+00:00</lastmod>
+    <loc>/post/thm-madeyes/</loc>
+    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/about/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/nahamcon2022/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/archive/</loc>
   </url><url>
     <loc>/categories/</loc>
-  </url><url>
-    <loc>/posts-list/</loc>
   </url><url>
     <loc>/tags/</loc>
   </url>

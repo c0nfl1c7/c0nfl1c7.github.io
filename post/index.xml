@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>c0nfl1c7</title>
+    <title>Posts on c0nfl1c7</title>
     
     
     
-    <link>/</link>
-    <description>Recent content on c0nfl1c7</description>
+    <link>/post/</link>
+    <description>Recent content in Posts on c0nfl1c7</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate>
     
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
@@ -115,28 +115,6 @@
     </item>
     
     <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Bonjour 👋 # Je m&amp;rsquo;appelle ▮▮▮▮▮, je suis passioné d&amp;rsquo;informatique et plus précisément de cybersécurité. Je m&amp;rsquo;intéresse aussi à la programmation, et au web3
-Je sais pas trop quoi dire sur moi donc abonnez vous plutot à mon twitter: @plugglover
-Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi que ce soit de disponible en publique, et sinon vous pouvez venir me parler sur discord
-          
-        
-        </description>
-    </item>
-    
-    <item>
       <title>NahamCon CTF 2022 - Writeup</title>
       <link>/post/nahamcon2022/</link>
       <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
@@ -150,26 +128,6 @@ Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi q
         
         
           Plusieurs writeups sur le NahamCon CTF 2022, fait avec [b0unce](https://twitter.com/@IlIlllIlIlIlIII). Ces writeups ont été faits en anglais car je les ai partagés sur le discord du CTF
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>Archive</title>
-      <link>/archive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/archive/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
           
         
         </description>
