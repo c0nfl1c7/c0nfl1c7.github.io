@@ -10,10 +10,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Tue, 27 Dec 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Qu&#39;est-ce que le Type Juggling en PHP ?</title>
+      <link>/post/php_type_juggling/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/php_type_juggling/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          En cette nouvelle année je m&#39;essaye à un nouveau format, j&#39;espère que cet article est clair et que vous pourrez apprendre de nouvelles choses
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>TryHackMe - Anonymous - Medium</title>
