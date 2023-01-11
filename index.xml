@@ -16,7 +16,7 @@
     
     
     <item>
-      <title>Qu&#39;est-ce que le Type Juggling en PHP ?</title>
+      <title>🇬🇧 What is &#34;Type Juggling&#34; (PHP)</title>
       <link>/post/php_type_juggling/</link>
       <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
       
@@ -29,14 +29,14 @@
         
         
         
-          En cette nouvelle année je m&#39;essaye à un nouveau format, j&#39;espère que cet article est clair et que vous pourrez apprendre de nouvelles choses
+          In this post, I will explain what is &#34;type juggling&#34; in PHP and some basic exploitation about it. Also this is my first post in English so I hope it will be clear and understandable
           
         
         </description>
     </item>
     
     <item>
-      <title>TryHackMe - Anonymous - Medium</title>
+      <title>🇫🇷 TryHackMe - Anonymous</title>
       <link>/post/thm-anonymous/</link>
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -56,7 +56,7 @@
     </item>
     
     <item>
-      <title>TryHackMe - Mr. Robot CTF - Medium</title>
+      <title>🇫🇷 TryHackMe - Mr. Robot CTF</title>
       <link>/post/thm-mrrobot/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -76,7 +76,7 @@
     </item>
     
     <item>
-      <title>TryHackMe - Wonderland - Medium</title>
+      <title>🇫🇷 TryHackMe - Wonderland</title>
       <link>/post/thm-wonderland/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -96,7 +96,7 @@
     </item>
     
     <item>
-      <title>TryHackMe - dogcat - Medium</title>
+      <title>🇫🇷 TryHackMe - dogcat</title>
       <link>/post/thm-dogcat/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -116,7 +116,7 @@
     </item>
     
     <item>
-      <title>TryHackMe - Madeye&#39;s Castle - Medium</title>
+      <title>🇫🇷 TryHackMe - Madeye&#39;s Castle</title>
       <link>/post/thm-madeyes/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
       
@@ -130,6 +130,26 @@
         
         
           Writeup pour la room &#34;Madeye&#39;s Castle&#34;, une room medium sous linux
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>🇬🇧 NahamCon CTF 2022</title>
+      <link>/post/nahamcon2022/</link>
+      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/nahamcon2022/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Plusieurs writeups sur le NahamCon CTF 2022, fait avec [b0unce](https://twitter.com/@IlIlllIlIlIlIII). Ces writeups ont été faits en anglais car je les ai partagés sur le discord du CTF
           
         
         </description>
@@ -152,26 +172,6 @@
           Bonjour 👋 # Je m&amp;rsquo;appelle ▮▮▮▮▮, je suis passioné d&amp;rsquo;informatique et plus précisément de cybersécurité. Je m&amp;rsquo;intéresse aussi à la programmation, et au web3
 Je sais pas trop quoi dire sur moi donc abonnez vous plutot à mon twitter: @plugglover
 Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi que ce soit de disponible en publique, et sinon vous pouvez venir me parler sur discord
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>NahamCon CTF 2022 - Writeup</title>
-      <link>/post/nahamcon2022/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/nahamcon2022/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Plusieurs writeups sur le NahamCon CTF 2022, fait avec [b0unce](https://twitter.com/@IlIlllIlIlIlIII). Ces writeups ont été faits en anglais car je les ai partagés sur le discord du CTF
           
         
         </description>
