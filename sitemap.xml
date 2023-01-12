@@ -2,14 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/post/thm-blog/</loc>
+    <lastmod>2023-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/</loc>
+    <lastmod>2023-01-12T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/post/</loc>
+    <lastmod>2023-01-12T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/post/php_type_juggling/</loc>
     <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/post/</loc>
-    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
+    <loc>/post/thm-ultratech/</loc>
+    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/post/thm-anonymous/</loc>
     <lastmod>2022-12-27T00:00:00+00:00</lastmod>

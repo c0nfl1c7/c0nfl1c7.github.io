@@ -10,10 +10,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>🇫🇷 TryHackMe - Blog</title>
+      <link>/post/thm-blog/</link>
+      <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/thm-blog/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Writeup pour la room &#34;Blog&#34;, une room medium sous linux
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>🇬🇧 What is &#34;Type Juggling&#34; (PHP)</title>
@@ -30,6 +50,26 @@
         
         
           In this post, I will explain what is &#34;type juggling&#34; in PHP and some basic exploitation about it. Also this is my first post in English so I hope it will be clear and understandable
+          
+        
+        </description>
+    </item>
+    
+    <item>
+      <title>🇫🇷 TryHackMe - Ultra Tech</title>
+      <link>/post/thm-ultratech/</link>
+      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      
+      <guid>/post/thm-ultratech/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Writeup pour la room &#34;Ultra Tech&#34;, une room medium sous linux
           
         
         </description>
