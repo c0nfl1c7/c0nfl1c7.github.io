@@ -448,7 +448,7 @@ code, kbd {
   padding: 1px 6px;
   margin: 0 2px;
   border-radius: 5px;
-  font-size: 1.1rem;
+  font-size: .9em;
   font-weight: normal;
   font-feature-settings: normal; }
   code code, code kbd, kbd code, kbd kbd {
@@ -545,18 +545,34 @@ hr {
   display: none; }
 
 .framed {
-  padding: 50px;
+  padding: 20px;
   margin: 0 -50px 40px;
   border-radius: 10px;
   border: 1px solid var(--border-color);
-  width: 100%;
-  max-width: 860px; }
+  width: 25%;
+  max-width: 800px;
+  text-align: center; }
   @media (max-width: 900px) {
     .framed {
       width: auto;
       max-width: 680px;
       margin: 20px 20px 40px;
       padding: 30px; } }
+.framed img {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  border-radius: 175px;
+  width: 55%; }
+
+.framed a {
+  position: absolute;
+  top: 0;
+  left: 0; }
+
+.framed h4 {
+  font-weight: normal; }
+
 blockquote.twitter-tweet {
   background: rgba(44, 124, 186, 0.1);
   border: none;
