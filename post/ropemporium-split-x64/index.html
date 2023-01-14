@@ -440,7 +440,7 @@ Si vous ne comprenez pas quelque chose, je vous invite à regarder mon post sur 
 </span></span></code></pre></div><p>Maintenant qu&rsquo;on a notre gadget, récapitulons:</p>
 <ul>
 <li>Avec un padding de 40 bytes, on commence à réecrire la sauvegarde de <code>rip</code> (instruction pointer)</li>
-<li>On peut mettre (l&rsquo;adresse de) <code>/bin/cat flag.txt</code>  dans <code>rdi</code> grâce à notre gadget <code>pop rdi; ret</code></li>
+<li>On peut mettre un pointeur vers <code>/bin/cat flag.txt</code>  dans <code>rdi</code> grâce à notre gadget <code>pop rdi; ret</code></li>
 <li>On peut appeller la fonction <code>system</code> depuis son adresse puisque la protection <code>PIE</code> n&rsquo;est pas activée</li>
 </ul>
 <blockquote>
