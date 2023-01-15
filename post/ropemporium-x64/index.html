@@ -11,10 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Sommaire # Ex.1: ret2win
-Ex.2: split
-Ex.3: callme
-ret2win # Note # Je suis actuellement entrain d&amp;rsquo;apprendre le pwn donc il est possible que je fasse des erreurs ou que je dise des choses fausses dans ce post, si vous en voyez n&amp;rsquo;hésitez pas à me contacter sur discord.
+  content="Sommaire # Ex.1: ret2win # Exploitation Final Payload Ex.2: split # Exploitation Final Payload Ex.3: callme # Exploitation Final Payload ret2win # Note # Je suis actuellement entrain d&amp;rsquo;apprendre le pwn donc il est possible que je fasse des erreurs ou que je dise des choses fausses dans ce post, si vous en voyez n&amp;rsquo;hésitez pas à me contacter sur discord.
 File information # Avant de commencer à regarder dans l&amp;rsquo;executable, il faut savoir à quoi on s&amp;rsquo;attaque, on va utiliser file pour avoir des informations sur le fichier, puis checksec pour voir les éventuelles sécuritées avec lesquelles il a été compilé"
 />
 <meta
@@ -192,13 +189,34 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 <hr>
 <ul>
 <li>
-<p>Ex.1: <a href="#ret2win"><em>ret2win</em></a></p>
+<h4 id="ex1-ret2winret2win">
+  Ex.1: <a href="#ret2win"><em>ret2win</em></a>
+  <a href="#ex1-ret2winret2win" class="h-anchor" aria-hidden="true">#</a>
+</h4>
+<ul>
+<li><a href="#exploitation">Exploitation</a></li>
+<li><a href="#final-payload">Final Payload</a></li>
+</ul>
 </li>
 <li>
-<p>Ex.2: <a href="#split"><em>split</em></a></p>
+<h4 id="ex2-splitsplit">
+  Ex.2: <a href="#split"><em>split</em></a>
+  <a href="#ex2-splitsplit" class="h-anchor" aria-hidden="true">#</a>
+</h4>
+<ul>
+<li><a href="#exploitation-1">Exploitation</a></li>
+<li><a href="#final-payload-1">Final Payload</a></li>
+</ul>
 </li>
 <li>
-<p>Ex.3: <a href="#callme"><em>callme</em></a></p>
+<h4 id="ex3-callmecallme">
+  Ex.3: <a href="#callme"><em>callme</em></a>
+  <a href="#ex3-callmecallme" class="h-anchor" aria-hidden="true">#</a>
+</h4>
+<ul>
+<li><a href="#exploitation-2">Exploitation</a></li>
+<li><a href="#final-payload-2">Final Payload</a></li>
+</ul>
 </li>
 </ul>
 <hr>
@@ -329,7 +347,11 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>ROPgadget <span style="color:#f92672">--</span>binary ret2win <span style="color:#f92672">|</span> grep ret
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x000000000040053e</span> : ret
-</span></span></code></pre></div><p>Maintenant qu&rsquo;on a l&rsquo;addresse du <code>ret</code> on peut l&rsquo;ajouter à notre payload, et il devrait fonctionner cette fois. Voici donc la version finale de l&rsquo;exploit</p>
+</span></span></code></pre></div><h2 id="final-payload">
+  Final Payload
+  <a href="#final-payload" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>Maintenant qu&rsquo;on a l&rsquo;addresse du <code>ret</code> on peut l&rsquo;ajouter à notre payload, et il devrait fonctionner cette fois. Voici donc la version finale de l&rsquo;exploit</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>context<span style="color:#f92672">.</span>binary <span style="color:#f92672">=</span> binary <span style="color:#f92672">=</span> ELF(<span style="color:#e6db74">&#34;./ret2win&#34;</span>, checksec<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
@@ -612,6 +634,10 @@ File information # Avant de commencer à regarder dans l&amp;rsquo;executable, i
 <blockquote>
 <p>Si PIE avait été activé, nous n&rsquo;aurions pas pu prendre l&rsquo;adresse de la fonction <code>system</code> puisqu&rsquo;elle aurait changé entre chaque exécution</p>
 </blockquote>
+<h2 id="final-payload-1">
+  Final Payload
+  <a href="#final-payload-1" class="h-anchor" aria-hidden="true">#</a>
+</h2>
 <p>Complétons notre exploit</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
 </span></span><span style="display:flex;"><span>
@@ -828,7 +854,11 @@ For the x86_64 binary double up those values, e.g. callme_one(0xdeadbeefdeadbeef
 </span></span><span style="display:flex;"><span><span style="color:#ae81ff">0x00000000004006be</span> : ret
 </span></span><span style="display:flex;"><span><span style="color:#f92672">&lt;...&gt;</span>
 </span></span><span style="display:flex;"><span>Unique gadgets found: <span style="color:#ae81ff">110</span>
-</span></span></code></pre></div><p>Complétons notre exploit avec ce ret:</p>
+</span></span></code></pre></div><h2 id="final-payload-2">
+  Final Payload
+  <a href="#final-payload-2" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>Complétons notre exploit avec ce ret:</p>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> pwn <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
