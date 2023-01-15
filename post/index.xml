@@ -10,10 +10,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Sat, 14 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 15 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>🇫🇷 ROPEmporium - x64</title>
+      <link>/post/ropemporium-x64/</link>
+      <pubDate>Sun, 15 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/post/ropemporium-x64/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          write-ups pour chaque exercice de ropemporium.com en x64
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>🇫🇷 HackTheBox - Shoppy</title>
@@ -30,46 +50,6 @@
         
         
           Mon premier write-up sur HTB, pour la room &#34;Shoppy&#34;
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - split (x64)</title>
-      <link>/post/ropemporium-split-x64/</link>
-      <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/post/ropemporium-split-x64/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Writeup sur l&#39;exercice &#34;split&#34; de ropemporium.com
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - ret2win (x64)</title>
-      <link>/post/ropemporium-ret2win-x64/</link>
-      <pubDate>Fri, 13 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/post/ropemporium-ret2win-x64/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Mon premier writeup en pwn sur l&#39;exercice ret2win de ropemporium.com
           
         
         </description>
