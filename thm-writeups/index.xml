@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Thm-writeups on infosec blog</title>
+    <title>Thm-writeups on blog cybersécurité</title>
     
     
     
     <link>/thm-writeups/</link>
-    <description>Recent content in Thm-writeups on infosec blog</description>
+    <description>Recent content in Thm-writeups on blog cybersécurité</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
