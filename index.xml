@@ -10,10 +10,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Sun, 29 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Tue, 31 Jan 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>📙 Ambassador</title>
+      <link>/htb-writeups/ambassador/</link>
+      <pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/htb-writeups/ambassador/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          Arbitrary File Read - Exploiting CVEs
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>🇫🇷 ROPEmporium - x64</title>
@@ -35,11 +55,11 @@
     </item>
     
     <item>
-      <title>🇫🇷 HackTheBox - UpDown</title>
-      <link>/htb-writeups/htb-updown/</link>
+      <title>📙 UpDown</title>
+      <link>/htb-writeups/updown/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/htb-writeups/htb-updown/</guid>
+      <guid>/htb-writeups/updown/</guid>
       <description>
         
           
@@ -48,18 +68,18 @@
         
         
         
-          Writeup pour la room &#34;UpDown&#34; sur HackTheBox
+          Subdirectory &amp; Subdomain Fuzzing - File Upload - Bypass PHP Filters - Python2 Exploit
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 HackTheBox - Shoppy</title>
-      <link>/htb-writeups/htb-shoppy/</link>
+      <title>📗 Shoppy</title>
+      <link>/htb-writeups/shoppy/</link>
       <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/htb-writeups/htb-shoppy/</guid>
+      <guid>/htb-writeups/shoppy/</guid>
       <description>
         
           
@@ -68,18 +88,18 @@
         
         
         
-          Mon premier write-up sur HTB, pour la room &#34;Shoppy&#34;
+          Subdirectory &amp; Subdomain Fuzzing - NoSQL Injection - Docker Escape
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Blog</title>
-      <link>/thm-writeups/thm-blog/</link>
+      <title>📙 Blog</title>
+      <link>/thm-writeups/blog/</link>
       <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-blog/</guid>
+      <guid>/thm-writeups/blog/</guid>
       <description>
         
           
@@ -88,7 +108,7 @@
         
         
         
-          Writeup pour la room &#34;Blog&#34;, une room medium sous linux
+          Credentials Bruteforce - Metasploit WordPress CVE - SUID Binary
           
         
         </description>
@@ -114,11 +134,11 @@
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Ultra Tech</title>
-      <link>/thm-writeups/thm-ultratech/</link>
+      <title>📙 UltraTech</title>
+      <link>/thm-writeups/ultratech/</link>
       <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-ultratech/</guid>
+      <guid>/thm-writeups/ultratech/</guid>
       <description>
         
           
@@ -127,18 +147,18 @@
         
         
         
-          Writeup pour la room &#34;Ultra Tech&#34;, une room medium sous linux
+          API Command Injection - Hash Cracking - Docker Escape
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Anonymous</title>
-      <link>/thm-writeups/thm-anonymous/</link>
+      <title>📙 Anonymous</title>
+      <link>/thm-writeups/anonymous/</link>
       <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-anonymous/</guid>
+      <guid>/thm-writeups/anonymous/</guid>
       <description>
         
           
@@ -147,18 +167,18 @@
         
         
         
-          Writeup pour la room &#34;Anonymous&#34;, une room medium sous linux
+          Vulnerable FTP - Bash Reverse Shell - SUID Binary
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Mr. Robot CTF</title>
-      <link>/thm-writeups/thm-mrrobot/</link>
+      <title>📙 Mr. Robot CTF</title>
+      <link>/thm-writeups/mrrobot/</link>
       <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-mrrobot/</guid>
+      <guid>/thm-writeups/mrrobot/</guid>
       <description>
         
           
@@ -167,18 +187,18 @@
         
         
         
-          Writeup pour la room &#34;Mr. Robot CTF&#34;, une room medium sous linux
+          Credentials Bruteforce - PHP Reverse Shell - Hash Cracking - SUID Binary
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Wonderland</title>
-      <link>/thm-writeups/thm-wonderland/</link>
+      <title>📙 Wonderland</title>
+      <link>/thm-writeups/wonderland/</link>
       <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-wonderland/</guid>
+      <guid>/thm-writeups/wonderland/</guid>
       <description>
         
           
@@ -194,11 +214,11 @@
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - dogcat</title>
-      <link>/thm-writeups/thm-dogcat/</link>
+      <title>📙 Dogcat</title>
+      <link>/thm-writeups/dogcat/</link>
       <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-dogcat/</guid>
+      <guid>/thm-writeups/dogcat/</guid>
       <description>
         
           
@@ -207,18 +227,18 @@
         
         
         
-          Writeup pour la room &#34;dogcat&#34;, une room medium sous linux
+          Local File Inclusion - Log Poisonning - Docker Escape
           
         
         </description>
     </item>
     
     <item>
-      <title>🇫🇷 TryHackMe - Madeye&#39;s Castle</title>
-      <link>/thm-writeups/thm-madeyes/</link>
+      <title>📙 Madeye&#39;s Castle</title>
+      <link>/thm-writeups/madeyes/</link>
       <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/thm-madeyes/</guid>
+      <guid>/thm-writeups/madeyes/</guid>
       <description>
         
           
@@ -227,7 +247,7 @@
         
         
         
-          Writeup pour la room &#34;Madeye&#39;s Castle&#34;, une room medium sous linux
+          SQL Injection - Hash Cracking - Path Hijacking
           
         
         </description>

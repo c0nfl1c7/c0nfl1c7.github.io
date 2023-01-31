@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        📙 Mr. Robot CTF ::
+        infosec blog
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Recon Foothold Lateral Move Privilege Escalation mrrobot.thm # Difficulty: Medium OS: Linux Description: Based on the Mr. Robot show, can you root this box? Link: https://tryhackme.com/room/mrrobot Note # La room était super, super lente… peut être à cause du OpenVPN mais en tout cas la partie bruteforce m’a pris une éternité
+Sinon la room est sympa, assez facile mais c’est toujours cool
+Recon # ⌨️ nmap -A mrrobot.thm
+Starting Nmap 7."
+/>
+<meta
+  name="keywords"
+  content="rami malek"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/thm-writeups/mrrobot/" />
+
+
+<meta name="description" content="un blog sur lequel vous pourrez retrouver des writeups et des posts explicatifs en français et en anglais">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png" />
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="📙 Mr. Robot CTF"/>
+<meta name="twitter:description" content="Credentials Bruteforce - PHP Reverse Shell - Hash Cracking - SUID Binary"/>
+
+
+
+<meta property="og:title" content="📙 Mr. Robot CTF" />
+<meta property="og:description" content="Credentials Bruteforce - PHP Reverse Shell - Hash Cracking - SUID Binary" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/thm-writeups/mrrobot/" /><meta property="article:section" content="thm-writeups" />
+<meta property="article:published_time" content="2022-12-26T00:00:00+00:00" />
+<meta property="article:modified_time" content="2022-12-26T00:00:00+00:00" /><meta property="og:site_name" content="infosec blog" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >c0nfl1c7</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/archive">Archive</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">
+            writeups
+            <span class="menu__sub-inner-more-trigger-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span
+            >
+          </li>
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/htb-writeups/">HTB Writeups</a></li>
+              
+            
+              
+                <li><a href="/thm-writeups/">THM Writeups</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/archive">Archive</a></li>
+      
+    
+      
+        <li><a href="/htb-writeups/">HTB Writeups</a></li>
+      
+    
+      
+        <li><a href="/thm-writeups/">THM Writeups</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <article class="post">
+    <h1 class="post-title">📙 Mr. Robot CTF</h1>
+    <div class="post-meta">
+      
+        <time class="post-date">
+          26-12-2022
+        </time>
+
+        
+      
+
+      
+        <span class="post-author"
+          >— écrit par conflict</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 4 minute(s) de lecture</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<ul>
+<li><a href="#recon">Recon</a></li>
+<li><a href="#foothold">Foothold</a></li>
+<li><a href="#lateral-move">Lateral Move</a></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a></li>
+</ul>
+<hr>
+<h1 id="mrrobotthm">
+  mrrobot.thm
+  <a href="#mrrobotthm" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<ul>
+<li>Difficulty: Medium</li>
+<li>OS: Linux</li>
+<li>Description: <code>Based on the Mr. Robot show, can you root this box?</code></li>
+<li>Link: <a href="https://tryhackme.com/room/mrrobot">https://tryhackme.com/room/mrrobot</a></li>
+</ul>
+<h1 id="note">
+  Note
+  <a href="#note" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>La room était super, super lente… peut être à cause du OpenVPN mais en tout cas la partie bruteforce m’a pris une éternité</p>
+<p>Sinon la room est sympa, assez facile mais c’est toujours cool</p>
+<h1 id="recon">
+  Recon
+  <a href="#recon" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p><code>⌨️ nmap -A mrrobot.thm</code></p>
+<pre tabindex="0"><code>Starting Nmap 7.80 ( https://nmap.org ) at 2022-12-24 13:25 CET
+Nmap scan report for mrrobot.thm (10.10.80.7)
+Host is up (0.13s latency).
+Not shown: 997 filtered ports
+PORT    STATE  SERVICE VERSION
+22/tcp  closed ssh
+80/tcp  open   http    Apache httpd
+|_http-server-header: Apache
+|_http-title: Site doesn&#39;t have a title (text/html).
+443/tcp open   ssl/ssl Apache httpd (SSL-only mode)
+|_http-server-header: Apache
+|_http-title: 400 Bad Request
+| ssl-cert: Subject: commonName=www.example.com
+| Not valid before: 2015-09-16T10:45:03
+|_Not valid after:  2025-09-13T10:45:03
+</code></pre><p>Rien de vraiment intéressant, on voit juste que le port ssh est fermé, donc si on a un mot de passe, on pourra pas se ssh avec</p>
+<p><code>⌨️ dirb http://mrrobot.thm</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442303-522d288a-34de-407f-9e03-2e2eec7c1e1b.png" alt="2022-12-24-133417_914x681_scrot"></p>
+<p>Pendant que le dirb tournait, je suis allé voir dans le /robots.txt, qui nous indique deux fichiers: key-1-of-3.txt et fsocity.dic</p>
+<p>Le premier fichier est le premier flag, donc on peux directement aller le voir par le site</p>
+<p>Pour le deuxième, c’est un dictionnaire qu’on va pouvoir utiliser pour bruteforce un form de login</p>
+<p>En se rendant sur /0, on voit que le site est un wordpress, et qu’il a une page de login: /wp-login</p>
+<h1 id="foothold">
+  Foothold
+  <a href="#foothold" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442308-50799358-cd18-4017-a323-92ca6d79a3fe.png" alt="2022-12-24-132859_1888x1030_scrot"></p>
+<p>En essayant de connecter avec les identifiants admin:admin, on voit qu’il nous dit que l’username est invalide, on peut donc utiliser ce message d’erreur pour bruteforce le username avec hydra</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442316-6d0d85fd-89de-4652-b5bc-7232483dd6d6.png" alt="2022-12-24-134445_384x97_scrot"></p>
+<p>Avant ça, on capture la requête avec burp pour voir comment le formulaire envoie les informations de login</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442320-3f1860b2-0e91-469c-99e8-54d210c9e2f2.png" alt="2022-12-24-134314_275x114_scrot"></p>
+<p>Il utilise log et pwd, on peut donc lancer hydra avec ces informations</p>
+<p><code>⌨️ hydra -L fsocity.dic -p 1337 mrrobot.thm http-post-form '/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log+In:Invalid username’</code></p>
+<blockquote>
+<p>-L permet de lui préciser que le nom d’utilisateur est une liste de plusieurs noms d’utilisateurs. On lui donne ensuite comme password “1337” puisqu’on ne connaît pas le bon password.
+Enfin, on lui indique de regarder si le message “Invalid Username” est présent dans la réponse</p>
+</blockquote>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442340-4eb2a3c0-d054-41be-a4c2-e9aad47dc208.png" alt="2022-12-24-134534_1883x211_scrot"></p>
+<p>Il nous trouve un username: <strong><strong><strong><strong><strong><strong>Elliot</strong></strong></strong></strong></strong></strong></p>
+<p>Maintenant qu’on connaît l’username, on peut réutiliser hydra pour bruteforce le mot de passe</p>
+<p><code>⌨️ hydra -l Elliot -P fsocity.dic mrrobot.thm http-post-form '/wp-login.php:log=^USER^&amp;pwd=^PASS^&amp;wp-submit=Log+In:The password you’</code></p>
+<p>On fait la même chose qu’avant, mais on lui indique de chercher “The password you”</p>
+<p>(cette partie a pris beaucoup de temps)</p>
+<p>Le password d’<strong><strong><strong><strong><strong><strong><strong>Elliot</strong></strong></strong></strong></strong></strong></strong> est donc <strong>ER28-0652</strong></p>
+<p>On peux maintenant se connecter au panel admin du wordpress</p>
+<p>En se balandant un peu dessus, on voit qu’on peut éditer les thèmes, dont les pages php tu thème actif</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442355-60213406-4298-489b-be66-fd18817a6974.png" alt="2022-12-24-150147_421x357_scrot"></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442358-df03b6d1-11ca-4356-b62e-2be49d06a411.png" alt="2022-12-24-150227_220x779_scrot"></p>
+<p>On va donc éditer la 404 dans laquelle on va mettre un reverse-shell en php</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442363-cc029cb3-ca6f-4a59-93f0-ee87f7ce53d7.png" alt="2022-12-24-150350_1735x793_scrot"></p>
+<p>On enregistre, puis on se rend sur <a href="http://mrrobot.thm/1337leet">http://mrrobot.thm/1337leet</a> (une page qui n’existe pas, donc qui appellera la 404.php)</p>
+<p>Avant de faire ça, on lance le netcat sur notre machine</p>
+<p><code>⌨️ nc -lvnp 9001</code></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442377-05b0688f-649b-4b7d-b566-d314e86804e7.png" alt="2022-12-24-150523_1083x508_scrot"></p>
+<p>On est connectés à la machine, on va voir dans le /home pour savoir si on peut trouver un flag</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442386-1860ac8a-b35a-4c29-b5dc-fd6b3c7eef34.png" alt="2022-12-24-150617_498x297_scrot"></p>
+<p>Il y a bel et bien un flag, mais on a pas la permission puisqu’on est pas dans notre home</p>
+<h1 id="lateral-move">
+  Lateral move
+  <a href="#lateral-move" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Dans le password.raw-md5, on trouve un hash en raw-md5, qu’on peut mettre dans <a href="http://crackstation.net">http://crackstation.net</a></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442389-9809ef09-e061-4200-836e-5594d7b9e991.png" alt="2022-12-24-151445_1033x68_scrot"></p>
+<p>Maintenant qu’on a le password de <strong><strong><strong><strong><strong>robot</strong></strong></strong></strong></strong>, on doit utiliser su pour changer d’utilisateur (on ne peut toujours pas se ssh puisque le port est fermé)</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442392-c52add64-545a-40d1-9b92-115904cf5c0b.png" alt="2022-12-24-151551_475x126_scrot"></p>
+<h1 id="privilege-escalation">
+  Privilege Escalation
+  <a href="#privilege-escalation" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>On peut maintenant chercher des vecteurs de privesc, on commence par</p>
+<p><code>⌨️ sudo -l</code></p>
+<p>mais ça ne retourne rien. On tente de lister les files avec le setuid bit</p>
+<p><code>⌨️ find directory -user root -perm -4000 -exec ls -ldb {} \; &gt;/tmp/results</code></p>
+<p>mais ça ne retourne rien non plus</p>
+<p>A partir de là on pourrait lancer linpeas, mais on va d’abord aller regarder les binaires installés sur la machine</p>
+<p>En se baladant dans <strong><strong><strong><strong><strong><strong><strong><strong>/usr/local/bin</strong></strong></strong></strong></strong></strong></strong></strong>, on voit que <strong><strong><strong><strong>nmap</strong></strong></strong></strong> est installé sur la machine</p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442444-0cce9098-e426-46ca-adc7-de0f6912bf71.png" alt="2022-12-24-152210_353x70_scrot"></p>
+<p>En allant sur GTFObins, on voit que nmap peut être utilisé pour privesc</p>
+<p>→ <a href="https://gtfobins.github.io/gtfobins/nmap/#shell">https://gtfobins.github.io/gtfobins/nmap/#shell</a></p>
+<p><img src="https://user-images.githubusercontent.com/77807503/209442471-9ad79416-f768-46cd-9d63-d72c8d26ad28.png" alt="2022-12-24-152255_726x251_scrot"></p>
+<h6 id="back-to-top">
+  <a href="#"><em>back to top</em></a>
+  <a href="#back-to-top" class="h-anchor" aria-hidden="true">#</a>
+</h6>
+
+    </div>
+    
+
+    
+      
+    
+  </article>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">rami malek en personne</div>
+      
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>
