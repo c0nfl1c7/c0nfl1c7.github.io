@@ -10,10 +10,30 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Tue, 31 Jan 2023 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 13 Feb 2023 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="/htb-writeups/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>📗 Photobomb</title>
+      <link>/htb-writeups/photobomb/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/htb-writeups/photobomb/</guid>
+      <description>
+        
+          
+          
+          
+        
+        
+        
+          description par défaut
+          
+        
+        </description>
+    </item>
     
     <item>
       <title>📙 Ambassador</title>

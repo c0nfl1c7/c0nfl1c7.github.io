@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <meta
   name="description"
-  content="Recon Foothold Privilege Escalation updown.htb # Difficulty: Medium OS: Linux Link: https://app.hackthebox.com/machines/UpDown Note # Deuxième writeup sur HTB, il a lui aussi été fait il y a longtemps donc c&amp;rsquo;est possible que j&amp;rsquo;ai dit des bêtises, et il y a beaucoup de screens.
+  content="Recon Foothold Lateral Move Privilege Escalation updown.htb # Difficulty: Medium OS: Linux Link: https://app.hackthebox.com/machines/UpDown Note # Deuxième writeup sur HTB, il a lui aussi été fait il y a longtemps donc c&amp;rsquo;est possible que j&amp;rsquo;ai dit des bêtises, et il y a beaucoup de screens.
 Néanmoins, c&amp;rsquo;était un room assez sympathique avec une méchanique bien trouvée, je l&amp;rsquo;ai bien aimée.
 Recon # Comme d’habitude, on lance:
 nmap -A siteisup.htb Aucun port anormal d’ouvert, on va donc se concentrer sur le site et le résultat du dirbuster"
@@ -217,6 +217,7 @@ nmap -A siteisup.htb Aucun port anormal d’ouvert, on va donc se concentrer sur
 <ul>
 <li><a href="#recon">Recon</a></li>
 <li><a href="#foothold">Foothold</a></li>
+<li><a href="#lateral-move">Lateral Move</a></li>
 <li><a href="#privilege-escalation">Privilege Escalation</a></li>
 </ul>
 <hr>
@@ -408,9 +409,9 @@ nmap -A siteisup.htb Aucun port anormal d’ouvert, on va donc se concentrer sur
 <p>J’utilise un reverse shell spécial qui bypass exec(), shell_exec() et toutes les fonctions de ce type car elles sont filtrées</p>
 </blockquote>
 <p>On lance notre netcat, on upload le fichier puis on le visite&hellip;</p>
-<h1 id="lateral-move-via-vulnerable-py-file">
-  Lateral move (via vulnerable .py file)
-  <a href="#lateral-move-via-vulnerable-py-file" class="h-anchor" aria-hidden="true">#</a>
+<h1 id="lateral-move">
+  Lateral Move
+  <a href="#lateral-move" class="h-anchor" aria-hidden="true">#</a>
 </h1>
 <p>Maintenant qu&rsquo;on est connectés à la machine, routine classique pour stabiliser le shell</p>
 <pre tabindex="0"><code>python3 -c ‘import pty;pty.spawn(”/bin/bash”)’

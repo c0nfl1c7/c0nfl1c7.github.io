@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    
+      <title>
+        📗 Photobomb ::
+        blog cybersécurité
+      </title>
+    
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Recon Foothold Privilege Escalation photobomb.htb # Difficulty: Easy OS: Linux Link: https://app.hackthebox.com/machines/Photobomb Note # Il s&amp;rsquo;agit de la toute première room que j&amp;rsquo;ai flag sur HTB, il y a de ça 3 ou 4 mois. Elle était correcte, vous allez encore un peu pouvoir apprécier mon superbe Ubuntu riced on gnome (c&amp;rsquo;est une horreur).
+Recon # La page est assez sobre, avec un lien et.. c&amp;rsquo;est tout
+Le lien nous envoie vers /printer, qui nous demande un username et un mot de passe"
+/>
+<meta
+  name="keywords"
+  content="rami malek"
+/>
+<meta name="robots" content="noodp" />
+<link rel="canonical" href="/htb-writeups/photobomb/" />
+
+
+<meta name="description" content="un blog sur lequel vous pourrez retrouver des writeups et des posts explicatifs en français et en anglais">
+
+
+
+
+<link rel="stylesheet" href="/css/style.css" />
+
+<link rel="stylesheet" href="/style.css" />
+
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/img/apple-touch-icon-144-precomposed.png" />
+<link rel="shortcut icon" href="/img/favicon.png" />
+
+
+<link href="/fonts/Inter-Italic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Regular.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Medium.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-MediumItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-Bold.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+<link href="/fonts/Inter-BoldItalic.woff2" rel="preload" type="font/woff2" as="font" crossorigin="">
+
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="📗 Photobomb"/>
+<meta name="twitter:description" content="description par défaut"/>
+
+
+
+<meta property="og:title" content="📗 Photobomb" />
+<meta property="og:description" content="description par défaut" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="/htb-writeups/photobomb/" /><meta property="article:section" content="htb-writeups" />
+<meta property="article:published_time" content="2023-02-13T00:00:00+00:00" />
+<meta property="article:modified_time" content="2023-02-13T00:00:00+00:00" /><meta property="og:site_name" content="blog cybersécurité" />
+
+
+
+
+
+
+
+  </head>
+  <body class="dark-theme">
+    <div class="container">
+      <header class="header">
+  <span class="header__inner">
+    <a
+  href="/"
+  class="logo"
+  style="text-decoration: none;"
+>
+  
+    <span class="logo__mark"><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span>
+    <span class="logo__text"
+      >c0nfl1c7</span
+    >
+    <span class="logo__cursor"></span>
+  
+</a>
+
+    <span class="header__right">
+      
+        <nav class="menu">
+  <ul class="menu__inner menu__inner--desktop">
+    
+      
+        
+          <li><a href="/about">About</a></li>
+        
+      
+        
+          <li><a href="/archive">Archive</a></li>
+        
+      
+      
+        <ul class="menu__sub-inner">
+          <li class="menu__sub-inner-more-trigger">
+            writeups
+            <span class="menu__sub-inner-more-trigger-icon"
+              ><svg xmlns="http://www.w3.org/2000/svg" class="greater-icon" viewBox="0 0 44 44">
+  <path fill="none" d="M15 8l14.729 14.382L15 35.367" />
+</svg>
+</span
+            >
+          </li>
+          <ul class="menu__sub-inner-more hidden">
+            
+              
+                <li><a href="/htb-writeups/">HTB Writeups</a></li>
+              
+            
+              
+                <li><a href="/thm-writeups/">THM Writeups</a></li>
+              
+            
+          </ul>
+        </ul>
+      
+      
+  </ul>
+
+  <ul class="menu__inner menu__inner--mobile">
+    
+      
+        <li><a href="/about">About</a></li>
+      
+    
+      
+        <li><a href="/archive">Archive</a></li>
+      
+    
+      
+        <li><a href="/htb-writeups/">HTB Writeups</a></li>
+      
+    
+      
+        <li><a href="/thm-writeups/">THM Writeups</a></li>
+      
+    
+  </ul>
+</nav>
+
+        <span class="menu-trigger">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none" />
+            <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z" />
+          </svg>
+        </span>
+      
+      <span class="theme-toggle">
+        <svg
+  class="theme-toggler"
+  width="24"
+  height="24"
+  viewBox="0 0 48 48"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+>
+  <path
+    d="M22 41C32.4934 41 41 32.4934 41 22C41 11.5066 32.4934 3 22
+  3C11.5066 3 3 11.5066 3 22C3 32.4934 11.5066 41 22 41ZM7 22C7
+  13.7157 13.7157 7 22 7V37C13.7157 37 7 30.2843 7 22Z"
+  />
+</svg>
+
+      </span>
+    </span>
+  </span>
+</header>
+
+
+      <div class="content">
+        
+  
+  
+
+  <article class="post">
+    <h1 class="post-title">📗 Photobomb</h1>
+    <div class="post-meta">
+      
+        <time class="post-date">
+          13-02-2023
+        </time>
+
+        
+      
+
+      
+        <span class="post-author"
+          >— écrit par conflict</span
+        >
+
+
+      
+        <span class="post-read-time"
+          >— 4 minute(s) de lecture</span
+        >
+      
+    </div>
+
+    
+
+    
+
+    <div class="post-content">
+      
+      <hr>
+<ul>
+<li><a href="#recon">Recon</a></li>
+<li><a href="#foothold">Foothold</a></li>
+<li><a href="#privilege-escalation">Privilege Escalation</a></li>
+</ul>
+<hr>
+<h1 id="photobombhtb">
+  photobomb.htb
+  <a href="#photobombhtb" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<ul>
+<li>Difficulty: Easy</li>
+<li>OS: Linux</li>
+<li>Link: <a href="https://app.hackthebox.com/machines/Photobomb">https://app.hackthebox.com/machines/Photobomb</a></li>
+</ul>
+<h1 id="note">
+  Note
+  <a href="#note" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Il s&rsquo;agit de la toute première room que j&rsquo;ai flag sur HTB, il y a de ça 3 ou 4 mois. Elle était correcte, vous allez encore un peu pouvoir apprécier mon superbe Ubuntu riced on gnome (c&rsquo;est une horreur).</p>
+<h1 id="recon">
+  Recon
+  <a href="#recon" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p><img src="https://i.ibb.co/KGVjb2V/image.png" alt="page.png"></p>
+<p>La page est assez sobre, avec un lien et.. c&rsquo;est tout</p>
+<p>Le lien nous envoie vers <code>/printer</code>, qui nous demande un username et un mot de passe</p>
+<p>En inspéctant le <code>js</code> de la page, on voit que si l&rsquo;utilisateur a le cookie <code>isPhotoBombTechSupport</code> et qu&rsquo;il clique dessus, il sera renvoyé vers le <code>/printer</code> avec les identifiants <code>pH0t0:b0Mb!</code></p>
+<p><img src="https://i.ibb.co/94f0JG9/image.png" alt="ids.png"></p>
+<p>On peut donc manuellement s&rsquo;ajouter le cookie (oui, nous pourrions aussi directement recopier les identifiants mais ça nous évitera de les retaper à l&rsquo;avenir), puis on clique sur le lien</p>
+<p>Le site affiche une alerte, puis nous redirige vers le <code>/printer</code> en <strong>étant connecté</strong></p>
+<p><img src="https://i.ibb.co/YTyY4jp/image.png" alt="alert.png"></p>
+<p>On finis rapidement la reconnaissance par vérifier le <code>/robots.txt</code>, mais on tombe sur une <code>404</code>, avec un bout de code en ruby, rien de très utile</p>
+<p><img src="https://i.ibb.co/5k4KZ7T/image.png" alt="robots.txt.png"></p>
+<h1 id="foothold">
+  Foothold
+  <a href="#foothold" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Sur le <code>/printer</code>, la seule chose qui saute aux yeux est le gros bouton rouge en bas de la page. En cliquant dessus, on se rend compte qu&rsquo;il envoie une requête <code>POST</code> vers <code>/printer</code></p>
+<p>On lance donc <code>Burp</code> pour intercépter la requête.</p>
+<p><img src="https://i.ibb.co/MnmgTDj/image.png" alt="request.png"></p>
+<p>On voit 3 paramètres: la photo, le filetype et enfin les dimensions</p>
+<p>Si on change manuellement les dimensions dans la requête à <code>100x100</code>, le site nous télécharge une version de l&rsquo;image en <code>100x100</code>, on comprend donc que l&rsquo;image est générée dynamiquement au moment de la requête</p>
+<p>On peut imaginer une commande du style</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>generateImage -path photo -type filetype -size dimensions
+</span></span></code></pre></div><p>Où bien sûr nos trois arguments sont passés par la requête.</p>
+<p>En partant donc ce cela et en assumant qu&rsquo;il s&rsquo;agit d&rsquo;une commande bash, on peut tenter une code execution en ajoutant un <code>;</code> à la fin d&rsquo;un des paramètres.</p>
+<p>Le problème, c&rsquo;est que nous ne savons pas lequel des 3 paramètres est le dernier de la commande. On va donc tenter sur chacun des paramètres jusqu&rsquo;à trouver lequel est mis en dernier, pour que la commande ressemble par exemple à:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>generateImage -path photo.png -type png -dimensions 100x100;id
+</span></span></code></pre></div><p>Cette ligne va éxecuter deux commandes: <code>generateImage</code> et <code>id</code></p>
+<p><img src="https://i.ibb.co/V2GXWbj/image.png" alt="req1.png"></p>
+<p>Le site renvoie un <code>500</code>, car il n&rsquo;a pas trouvé l&rsquo;image, l&rsquo;argument <code>photo</code> n&rsquo;est donc pas injectable.</p>
+<p>On enlève le payload sur ce dernier, et on renvoie la requête</p>
+<p><img src="https://i.ibb.co/L9CJLMX/image.png" alt="req2.png"></p>
+<p>Nouvelle réponse <code>500</code>, cette fois les dimensions sont invalides. En revanche, il n&rsquo;a rien dit sur le <code>filetype</code>, on sait donc maintenant que notre commande ressemble plutôt à:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>generateImage -path photo.png -dimensions 100x100 -type png;id
+</span></span></code></pre></div><p>Pour vérifier ça, on héberge rapidement un serveur python qu&rsquo;on va curl via notre payload</p>
+<p><img src="https://i.ibb.co/hXx07gC/image.png" alt="hack.png"></p>
+<p>Et ça fonctionne, on a reçu la requête sur notre serveur, on a donc notre code execution.</p>
+<p>On va reverse shell la machine, pour ce faire on build un reverse shell qu&rsquo;on url encode et qu&rsquo;on met à la suite de notre <code>;</code>. On lance un <code>netcat</code> puis on envoie la requête.</p>
+<p><img src="https://i.ibb.co/GkR5JLt/image.png" alt="revshell.png"></p>
+<h1 id="privilege-escalation">
+  Privilege Escalation
+  <a href="#privilege-escalation" class="h-anchor" aria-hidden="true">#</a>
+</h1>
+<p>Après avoir stabilisé notre shell, on fait un <code>sudo -l</code> et on voit que l&rsquo;utilisateur <code>wizard</code> pour utiliser sudo sur le fichier <code>cleanup.sh</code>. Il peut aussi modifier les variables d&rsquo;environnement au lancement du programme. (<code>SETENV</code>)</p>
+<p><img src="https://i.ibb.co/BV9jm5v/image.png" alt="sudol.png"></p>
+<p>On cat le <code>cleanup.sh</code> pour voir ce qu&rsquo;il y a dedans, et on remarque que le script fait appel à plusieurs commandes <code>bash</code>. En revanche, il les appelle toutes avec leur chemin absolu (<code>/bin/cat</code>) sauf pour <code>find</code></p>
+<p><img src="https://i.ibb.co/xH6QWz3/image.png" alt="cleanup.png"></p>
+<p>On part sur une <code>path hijacking</code> de la commande <code>find</code>, on crée donc un fichier <code>find</code> dans lequel on écrit <code>/bin/bash</code>, puis on le met dans <code>tmp</code>. Enfin, on lui met toutes les permissions (<code>7</code> = <code>RWX</code>).</p>
+<p><img src="https://i.ibb.co/3FyCRsQ/image.png" alt="pathhijacking.png"></p>
+<p>Puis on lance <code>cleanup.sh</code> avec <code>sudo</code> en modifiant la variable d&rsquo;environnement <code>$PATH</code> pour qu&rsquo;il aille d&rsquo;abord chercher la commande <code>find</code> dans le <code>/tmp</code>.</p>
+<p><img src="https://i.ibb.co/bzgY1tV/image.png" alt="root.png"></p>
+<p>gg!</p>
+<h6 id="back-to-top">
+  <a href="#"><em>back to top</em></a>
+  <a href="#back-to-top" class="h-anchor" aria-hidden="true">#</a>
+</h6>
+
+    </div>
+    
+
+    
+      
+    
+  </article>
+
+      </div>
+
+      
+        <footer class="footer">
+  <div class="footer__inner">
+    
+      <div class="copyright copyright--user">rami malek en personne</div>
+      
+  </div>
+</footer>
+
+
+
+
+
+<script type="text/javascript" src="/bundle.min.js"></script>
+
+
+      
+    </div>
+
+    
+  </body>
+</html>
