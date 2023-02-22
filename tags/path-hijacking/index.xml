@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>path hijacking on conflict</title>
+    <link>/tags/path-hijacking/</link>
+    <description>Recent content in path hijacking on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 13 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/path-hijacking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📗 HackTheBox - Photobomb</title>
+      <link>/posts/2023/02/hackthebox-photobomb/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/hackthebox-photobomb/</guid>
+      <description>Table of contents Recon
+Foothold
+Privilege Escalation
+Note Il s&amp;rsquo;agit de la toute première room que j&amp;rsquo;ai flag sur HTB, il y a de ça 3 ou 4 mois. Elle était correcte, vous allez encore un peu pouvoir apprécier mon superbe Ubuntu riced on gnome (c&amp;rsquo;est une horreur).
+Recon La page est assez sobre, avec un lien et.. c&amp;rsquo;est tout
+Le lien nous envoie vers /printer, qui nous demande un username et un mot de passe</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>docker escape on conflict</title>
+    <link>/tags/docker-escape/</link>
+    <description>Recent content in docker escape on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 14 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/docker-escape/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📗 HackTheBox - Shoppy</title>
+      <link>/posts/2023/01/hackthebox-shoppy/</link>
+      <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/hackthebox-shoppy/</guid>
+      <description>Table of contents Recon
+Foothold
+Lateral Move
+Privilege Escalation
+Note Il s&amp;rsquo;agit d&amp;rsquo;un des premiers write-ups que j&amp;rsquo;ai écrit de ma vie, j&amp;rsquo;ai attendu que la machine retire avant de le poster. C&amp;rsquo;est possible que je n&amp;rsquo;utilise pas les bons termes à certains endroit, je n&amp;rsquo;ai pas relu tout le write-up pour me corriger (j&amp;rsquo;ai bien trop la flemme).
+Vous allez aussi pouvoir voir à quoi ressemblait mon mAgniFiQuE Ubuntu à cette époque (pas si lointaine)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Educative posts on conflict</title>
+    <link>/series/educative-posts/</link>
+    <description>Recent content in Educative posts on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Sat, 07 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/educative-posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇬🇧 What is: &#34;Type Juggling&#34;</title>
+      <link>/posts/2023/01/what-is-type-juggling/</link>
+      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/what-is-type-juggling/</guid>
+      <description>Table of contents Introduction
+Comparisons in PHP
+What causes the vulnerability
+Semi-Patched
+Better example
+How to avoid type juggling issues
+Conclusion
+Further documentation
+Prerequisites Know basic PHP Be familiar with the concept of value &amp;ldquo;types&amp;rdquo; (string, integer, float&amp;hellip;) Introduction PHP is a very famous and flexible backend programming language that aims to facilitate developer&amp;rsquo;s lives. Unfortunately, this flexibility can sometimes lead to more or less critical vulnerabilities.
+In PHP, type juggling is a functionnality that allows developers to be more flexible when they use the language, but it can also be dangerous when it&amp;rsquo;s not used carefully.</description>
+    </item>
+    
+  </channel>
+</rss>

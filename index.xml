@@ -1,337 +1,144 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>blog cybersécurité</title>
-    
-    
-    
+    <title>conflict</title>
     <link>/</link>
-    <description>Recent content on blog cybersécurité</description>
+    <description>Recent content on conflict</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>rami malek en personne</copyright>
-    <lastBuildDate>Mon, 13 Feb 2023 00:00:00 +0000</lastBuildDate>
-    
-	<atom:link href="/index.xml" rel="self" type="application/rss+xml" />
-    
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇬🇧 LACTF 2023 - pwn/bot</title>
+      <link>/posts/2023/02/lactf-2023-pwn/bot/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/lactf-2023-pwn/bot/</guid>
+      <description>Note Second pwn challenge from the LACTF 2023. Basic ret2win with a little twist: bypassing a condition to prevent the program from exiting&amp;hellip;
+Description I made a bot to automatically answer all of your questions. Dockerfile, libc-2.31.so, ld-2.31.so, bot.c, bot
+File information before doing all of that, we run pwninit to patch the binary with the given libc and ld
+checksec bot_patched &amp;amp;&amp;amp; file bot_patched [*] &amp;#39;/home/conflict/ctfs/lactf2023/bot/bot_patched&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x3ff000) RUNPATH: &amp;#39;.</description>
+    </item>
     
     <item>
-      <title>📗 Photobomb</title>
-      <link>/htb-writeups/photobomb/</link>
+      <title>🇬🇧 LACTF 2023 - pwn/gatekeep</title>
+      <link>/posts/2023/02/lactf-2023-pwn/gatekeep/</link>
+      <pubDate>Wed, 15 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/lactf-2023-pwn/gatekeep/</guid>
+      <description>Note First pwn challenge of this CTF. It&amp;rsquo;s pretty easy because it only consists in overwriting a variable on the stack to make a condition valid and print the flag.
+Description If I gaslight you enough, you won&amp;#39;t be able to get my flag! :) Note: The attached binary is the exact same as the one executing on the remote server. Dockerfile, gatekeep.c, gatekeep
+File information checksec gatekeep &amp;amp;&amp;amp; file gatekeep [*] &amp;#39;/home/conflict/ctfs/lactf2023/gatekeep/gatekeep&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: PIE enabled gatekeep: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.</description>
+    </item>
+    
+    <item>
+      <title>📗 HackTheBox - Photobomb</title>
+      <link>/posts/2023/02/hackthebox-photobomb/</link>
       <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
       
-      <guid>/htb-writeups/photobomb/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          description par défaut
-          
-        
-        </description>
+      <guid>/posts/2023/02/hackthebox-photobomb/</guid>
+      <description>Table of contents Recon
+Foothold
+Privilege Escalation
+Note Il s&amp;rsquo;agit de la toute première room que j&amp;rsquo;ai flag sur HTB, il y a de ça 3 ou 4 mois. Elle était correcte, vous allez encore un peu pouvoir apprécier mon superbe Ubuntu riced on gnome (c&amp;rsquo;est une horreur).
+Recon La page est assez sobre, avec un lien et.. c&amp;rsquo;est tout
+Le lien nous envoie vers /printer, qui nous demande un username et un mot de passe</description>
     </item>
     
     <item>
-      <title>📙 Ambassador</title>
-      <link>/htb-writeups/ambassador/</link>
-      <pubDate>Tue, 31 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/htb-writeups/ambassador/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Arbitrary File Read - Exploiting CVEs
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - x64</title>
-      <link>/post/ropemporium-x64/</link>
-      <pubDate>Sun, 29 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/post/ropemporium-x64/</guid>
-      <description>
-        
-          &lt;img src=&#34;/static/img/ropemporium_cover.png&#34;/&gt;
-          
-        
-        
-        
-          write-ups pour chaque exercice de ropemporium.com en x64
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>📙 UpDown</title>
-      <link>/htb-writeups/updown/</link>
+      <title>📙 HackTheBox - UpDown</title>
+      <link>/posts/2023/01/hackthebox-updown/</link>
       <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/htb-writeups/updown/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Subdirectory &amp; Subdomain Fuzzing - File Upload - Bypass PHP Filters - Python2 Exploit
-          
-        
-        </description>
+      <guid>/posts/2023/01/hackthebox-updown/</guid>
+      <description>Table of contents Recon
+Foothold
+Lateral Move
+Privilege Escalation
+Note Deuxième writeup sur HTB, il a lui aussi été fait il y a longtemps donc c&amp;rsquo;est possible que j&amp;rsquo;ai dit des bêtises, et il y a beaucoup de screens.
+Néanmoins, c&amp;rsquo;était un room assez sympathique avec une méchanique bien trouvée, je l&amp;rsquo;ai bien aimée.
+Recon Comme d’habitude, on lance:
+nmap -A siteisup.htb Aucun port anormal d’ouvert, on va donc se concentrer sur le site et le résultat du dirbuster</description>
     </item>
     
     <item>
-      <title>📗 Shoppy</title>
-      <link>/htb-writeups/shoppy/</link>
+      <title>📗 HackTheBox - Shoppy</title>
+      <link>/posts/2023/01/hackthebox-shoppy/</link>
       <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/htb-writeups/shoppy/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Subdirectory &amp; Subdomain Fuzzing - NoSQL Injection - Docker Escape
-          
-        
-        </description>
+      <guid>/posts/2023/01/hackthebox-shoppy/</guid>
+      <description>Table of contents Recon
+Foothold
+Lateral Move
+Privilege Escalation
+Note Il s&amp;rsquo;agit d&amp;rsquo;un des premiers write-ups que j&amp;rsquo;ai écrit de ma vie, j&amp;rsquo;ai attendu que la machine retire avant de le poster. C&amp;rsquo;est possible que je n&amp;rsquo;utilise pas les bons termes à certains endroit, je n&amp;rsquo;ai pas relu tout le write-up pour me corriger (j&amp;rsquo;ai bien trop la flemme).
+Vous allez aussi pouvoir voir à quoi ressemblait mon mAgniFiQuE Ubuntu à cette époque (pas si lointaine)</description>
     </item>
     
     <item>
-      <title>📙 Blog</title>
-      <link>/thm-writeups/blog/</link>
-      <pubDate>Thu, 12 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/thm-writeups/blog/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Credentials Bruteforce - Metasploit WordPress CVE - SUID Binary
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>🇬🇧 What is &#34;Type Juggling&#34; (PHP)</title>
-      <link>/post/php_type_juggling/</link>
+      <title>🇬🇧 What is: &#34;Type Juggling&#34;</title>
+      <link>/posts/2023/01/what-is-type-juggling/</link>
       <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/post/php_type_juggling/</guid>
-      <description>
-        
-          &lt;img src=&#34;/static/img/php_type_juggling_cover.png&#34;/&gt;
-          
-        
-        
-        
-          In this post, I will explain what is &#34;type juggling&#34; in PHP and some basic exploitation about it. Also this is my first post in English so I hope it will be clear and understandable
-          
-        
-        </description>
+      <guid>/posts/2023/01/what-is-type-juggling/</guid>
+      <description>Table of contents Introduction
+Comparisons in PHP
+What causes the vulnerability
+Semi-Patched
+Better example
+How to avoid type juggling issues
+Conclusion
+Further documentation
+Prerequisites Know basic PHP Be familiar with the concept of value &amp;ldquo;types&amp;rdquo; (string, integer, float&amp;hellip;) Introduction PHP is a very famous and flexible backend programming language that aims to facilitate developer&amp;rsquo;s lives. Unfortunately, this flexibility can sometimes lead to more or less critical vulnerabilities.
+In PHP, type juggling is a functionnality that allows developers to be more flexible when they use the language, but it can also be dangerous when it&amp;rsquo;s not used carefully.</description>
     </item>
     
     <item>
-      <title>📙 UltraTech</title>
-      <link>/thm-writeups/ultratech/</link>
-      <pubDate>Fri, 30 Dec 2022 00:00:00 +0000</pubDate>
+      <title>🇫🇷 ROPEmporium - badchars (x64)</title>
+      <link>/posts/2023/01/ropemporium-badchars-x64/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/ultratech/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          API Command Injection - Hash Cracking - Docker Escape
-          
-        
-        </description>
+      <guid>/posts/2023/01/ropemporium-badchars-x64/</guid>
+      <description>Note Cinquièment exo de ROPemporium, je le trouve moins sympa que les autres. Il reprend le principe du challenge précédent, mais il introduit un nouveau gadget pour contourner le &amp;ldquo;filtre&amp;rdquo;: le xor
+Comme d&amp;rsquo;habitude, si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
+Et je vous conseille fortement de lire l&amp;rsquo;exercice précédent pour mieux comprendre ce que je fais ici puisque la méchanique principale est la même.</description>
     </item>
     
     <item>
-      <title>📙 Anonymous</title>
-      <link>/thm-writeups/anonymous/</link>
-      <pubDate>Tue, 27 Dec 2022 00:00:00 +0000</pubDate>
+      <title>📙 HackTheBox - Ambassador</title>
+      <link>/posts/2023/01/hackthebox-ambassador/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/anonymous/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Vulnerable FTP - Bash Reverse Shell - SUID Binary
-          
-        
-        </description>
+      <guid>/posts/2023/01/hackthebox-ambassador/</guid>
+      <description>Table of contents Recon
+Foothold
+Privilege Escalation
+Note La room était assez sympa, plutôt entre medium et easy. C&amp;rsquo;est dommage qu&amp;rsquo;il n&amp;rsquo;y ait &amp;ldquo;que&amp;rdquo; des CVE même si l&amp;rsquo;exploitation de Consul est intéressante.
+Recon dirb http://10.10.11.183 nmap -sC -sV 10.10.11.183 3000/tcp open ppp? | fingerprint-strings: | FourOhFourRequest: | HTTP/1.0 302 Found | Cache-Control: no-cache | Content-Type: text/html; charset=utf-8 | Expires: -1 | Location: /login | Pragma: no-cache 3306/tcp open nagios-nsca Nagios NSCA | mysql-info: | Protocol: 10 | Version: 8.</description>
     </item>
     
     <item>
-      <title>📙 Mr. Robot CTF</title>
-      <link>/thm-writeups/mrrobot/</link>
-      <pubDate>Mon, 26 Dec 2022 00:00:00 +0000</pubDate>
+      <title>🇫🇷 ROPEmporium - write4 (x64)</title>
+      <link>/posts/2023/01/ropemporium-write4-x64/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/mrrobot/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Credentials Bruteforce - PHP Reverse Shell - Hash Cracking - SUID Binary
-          
-        
-        </description>
+      <guid>/posts/2023/01/ropemporium-write4-x64/</guid>
+      <description>Note Quatrième exo de ROPEmporium, il introduit une nouvelle méchanique et nous pousse à utiliser un nouveau type de gadget, très intéressant
+Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
+Description On completing our usual checks for interesting strings and symbols in this binary we&amp;#39;re confronted with the stark truth that our favourite string &amp;#34;/bin/cat flag.</description>
     </item>
     
     <item>
-      <title>📙 Wonderland</title>
-      <link>/thm-writeups/wonderland/</link>
-      <pubDate>Sun, 25 Dec 2022 00:00:00 +0000</pubDate>
+      <title>🇫🇷 ROPEmporium - callme (x64)</title>
+      <link>/posts/2023/01/ropemporium-callme-x64/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
       
-      <guid>/thm-writeups/wonderland/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Writeup pour la room &#34;Wonderland&#34;, une room medium sous linux.
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>📙 Dogcat</title>
-      <link>/thm-writeups/dogcat/</link>
-      <pubDate>Sat, 24 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/thm-writeups/dogcat/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Local File Inclusion - Log Poisonning - Docker Escape
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>📙 Madeye&#39;s Castle</title>
-      <link>/thm-writeups/madeyes/</link>
-      <pubDate>Fri, 23 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/thm-writeups/madeyes/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          SQL Injection - Hash Cracking - Path Hijacking
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>🇬🇧 NahamCon CTF 2022</title>
-      <link>/post/nahamcon2022/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/post/nahamcon2022/</guid>
-      <description>
-        
-          &lt;img src=&#34;/static/img/nahamcon_cover.png&#34;/&gt;
-          
-        
-        
-        
-          Plusieurs writeups sur le NahamCon CTF 2022, fait avec [b0unce](https://twitter.com/@IlIlllIlIlIlIII). Ces writeups ont été faits en anglais car je les ai partagés sur le discord du CTF
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>About</title>
-      <link>/about/</link>
-      <pubDate>Thu, 22 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/about/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          Bonjour 👋 # Je m&amp;rsquo;appelle ▮▮▮▮▮, entrain d&amp;rsquo;apprendre le pwn et le reverse-engineering, je suis passionné d&amp;rsquo;informatique et plus précisément de cyber-sécurité.
-Je sais pas trop quoi dire sur moi donc abonnez vous plutot à mon twitter: @cnflc7
-Vous pouvez aussi regarder mon github mais je doute qu&amp;rsquo;il y ait quoi que ce soit de disponible en publique, et sinon vous pouvez venir me parler sur discord
-          
-        
-        </description>
-    </item>
-    
-    <item>
-      <title>Archive</title>
-      <link>/archive/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/archive/</guid>
-      <description>
-        
-          
-          
-          
-        
-        
-        
-          
-          
-        
-        </description>
+      <guid>/posts/2023/01/ropemporium-callme-x64/</guid>
+      <description>Note Troisième exo de ROPEmporium, un peu plus court que les deux précédents puisqu&amp;rsquo;il reprend des concepts qu&amp;rsquo;on connaît déjà donc pas trop de difficulté. Par contre un petit problème au niveau de la consigne il me semble.
+Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.</description>
     </item>
     
   </channel>

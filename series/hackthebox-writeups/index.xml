@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>HackTheBox Writeups on conflict</title>
+    <link>/series/hackthebox-writeups/</link>
+    <description>Recent content in HackTheBox Writeups on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Mon, 13 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/series/hackthebox-writeups/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>📗 HackTheBox - Photobomb</title>
+      <link>/posts/2023/02/hackthebox-photobomb/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/hackthebox-photobomb/</guid>
+      <description>Table of contents Recon
+Foothold
+Privilege Escalation
+Note Il s&amp;rsquo;agit de la toute première room que j&amp;rsquo;ai flag sur HTB, il y a de ça 3 ou 4 mois. Elle était correcte, vous allez encore un peu pouvoir apprécier mon superbe Ubuntu riced on gnome (c&amp;rsquo;est une horreur).
+Recon La page est assez sobre, avec un lien et.. c&amp;rsquo;est tout
+Le lien nous envoie vers /printer, qui nous demande un username et un mot de passe</description>
+    </item>
+    
+    <item>
+      <title>📙 HackTheBox - UpDown</title>
+      <link>/posts/2023/01/hackthebox-updown/</link>
+      <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/hackthebox-updown/</guid>
+      <description>Table of contents Recon
+Foothold
+Lateral Move
+Privilege Escalation
+Note Deuxième writeup sur HTB, il a lui aussi été fait il y a longtemps donc c&amp;rsquo;est possible que j&amp;rsquo;ai dit des bêtises, et il y a beaucoup de screens.
+Néanmoins, c&amp;rsquo;était un room assez sympathique avec une méchanique bien trouvée, je l&amp;rsquo;ai bien aimée.
+Recon Comme d’habitude, on lance:
+nmap -A siteisup.htb Aucun port anormal d’ouvert, on va donc se concentrer sur le site et le résultat du dirbuster</description>
+    </item>
+    
+    <item>
+      <title>📗 HackTheBox - Shoppy</title>
+      <link>/posts/2023/01/hackthebox-shoppy/</link>
+      <pubDate>Sat, 14 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/hackthebox-shoppy/</guid>
+      <description>Table of contents Recon
+Foothold
+Lateral Move
+Privilege Escalation
+Note Il s&amp;rsquo;agit d&amp;rsquo;un des premiers write-ups que j&amp;rsquo;ai écrit de ma vie, j&amp;rsquo;ai attendu que la machine retire avant de le poster. C&amp;rsquo;est possible que je n&amp;rsquo;utilise pas les bons termes à certains endroit, je n&amp;rsquo;ai pas relu tout le write-up pour me corriger (j&amp;rsquo;ai bien trop la flemme).
+Vous allez aussi pouvoir voir à quoi ressemblait mon mAgniFiQuE Ubuntu à cette époque (pas si lointaine)</description>
+    </item>
+    
+    <item>
+      <title>📙 HackTheBox - Ambassador</title>
+      <link>/posts/2023/01/hackthebox-ambassador/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/hackthebox-ambassador/</guid>
+      <description>Table of contents Recon
+Foothold
+Privilege Escalation
+Note La room était assez sympa, plutôt entre medium et easy. C&amp;rsquo;est dommage qu&amp;rsquo;il n&amp;rsquo;y ait &amp;ldquo;que&amp;rdquo; des CVE même si l&amp;rsquo;exploitation de Consul est intéressante.
+Recon dirb http://10.10.11.183 nmap -sC -sV 10.10.11.183 3000/tcp open ppp? | fingerprint-strings: | FourOhFourRequest: | HTTP/1.0 302 Found | Cache-Control: no-cache | Content-Type: text/html; charset=utf-8 | Expires: -1 | Location: /login | Pragma: no-cache 3306/tcp open nagios-nsca Nagios NSCA | mysql-info: | Protocol: 10 | Version: 8.</description>
+    </item>
+    
+  </channel>
+</rss>

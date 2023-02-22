@@ -1,18 +1,102 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Tags on blog cybersécurité</title>
-    
-    
-    
+    <title>Tags on conflict</title>
     <link>/tags/</link>
-    <description>Recent content in Tags on blog cybersécurité</description>
+    <description>Recent content in Tags on conflict</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>rami malek en personne</copyright>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pwn</title>
+      <link>/tags/pwn/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pwn/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>ret2win</title>
+      <link>/tags/ret2win/</link>
+      <pubDate>Fri, 17 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ret2win/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>burpsuite</title>
+      <link>/tags/burpsuite/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/burpsuite/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>command injection</title>
+      <link>/tags/command-injection/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/command-injection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>js</title>
+      <link>/tags/js/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>linux</title>
+      <link>/tags/linux/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>path hijacking</title>
+      <link>/tags/path-hijacking/</link>
+      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/path-hijacking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CVE</title>
+      <link>/tags/cve/</link>
+      <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/cve/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>file upload</title>
+      <link>/tags/file-upload/</link>
+      <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/file-upload/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filters bypass</title>
+      <link>/tags/filters-bypass/</link>
+      <pubDate>Sat, 21 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/filters-bypass/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

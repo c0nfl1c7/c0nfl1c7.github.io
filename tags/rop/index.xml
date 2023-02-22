@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>rop on conflict</title>
+    <link>/tags/rop/</link>
+    <description>Recent content in rop on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Wed, 04 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇫🇷 ROPEmporium - badchars (x64)</title>
+      <link>/posts/2023/01/ropemporium-badchars-x64/</link>
+      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/ropemporium-badchars-x64/</guid>
+      <description>Note Cinquièment exo de ROPemporium, je le trouve moins sympa que les autres. Il reprend le principe du challenge précédent, mais il introduit un nouveau gadget pour contourner le &amp;ldquo;filtre&amp;rdquo;: le xor
+Comme d&amp;rsquo;habitude, si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
+Et je vous conseille fortement de lire l&amp;rsquo;exercice précédent pour mieux comprendre ce que je fais ici puisque la méchanique principale est la même.</description>
+    </item>
+    
+    <item>
+      <title>🇫🇷 ROPEmporium - write4 (x64)</title>
+      <link>/posts/2023/01/ropemporium-write4-x64/</link>
+      <pubDate>Tue, 03 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/ropemporium-write4-x64/</guid>
+      <description>Note Quatrième exo de ROPEmporium, il introduit une nouvelle méchanique et nous pousse à utiliser un nouveau type de gadget, très intéressant
+Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
+Description On completing our usual checks for interesting strings and symbols in this binary we&amp;#39;re confronted with the stark truth that our favourite string &amp;#34;/bin/cat flag.</description>
+    </item>
+    
+    <item>
+      <title>🇫🇷 ROPEmporium - callme (x64)</title>
+      <link>/posts/2023/01/ropemporium-callme-x64/</link>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/ropemporium-callme-x64/</guid>
+      <description>Note Troisième exo de ROPEmporium, un peu plus court que les deux précédents puisqu&amp;rsquo;il reprend des concepts qu&amp;rsquo;on connaît déjà donc pas trop de difficulté. Par contre un petit problème au niveau de la consigne il me semble.
+Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.</description>
+    </item>
+    
+    <item>
+      <title>🇫🇷 ROPEmporium - split (x64)</title>
+      <link>/posts/2023/01/ropemporium-split-x64/</link>
+      <pubDate>Sun, 01 Jan 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/01/ropemporium-split-x64/</guid>
+      <description>Note Deuxième exercice de ROPEmporium, un tout petit peu plus complexe que le précédent mais il reste très accessible. Je vais essayer une fois de plus d&amp;rsquo;expliquer le plus clairement possible ce que j&amp;rsquo;ai fait pour le réussir. Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
+Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.</description>
+    </item>
+    
+  </channel>
+</rss>

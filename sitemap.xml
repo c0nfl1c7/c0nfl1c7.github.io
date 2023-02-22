@@ -2,67 +2,150 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/posts/2023/02/lactf-2023-pwn/bot/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/series/lactf-2023-writeups/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/pwn/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/ret2win/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/series/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/</loc>
+    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/02/lactf-2023-pwn/gatekeep/</loc>
+    <lastmod>2023-02-15T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/02/hackthebox-photobomb/</loc>
     <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/htb-writeups/photobomb/</loc>
+    <loc>/tags/burpsuite/</loc>
     <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/htb-writeups/</loc>
+    <loc>/tags/command-injection/</loc>
     <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/htb-writeups/ambassador/</loc>
-    <lastmod>2023-01-31T00:00:00+00:00</lastmod>
+    <loc>/series/hackthebox-writeups/</loc>
+    <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/ropemporium-x64/</loc>
-    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
+    <loc>/tags/js/</loc>
+    <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/</loc>
-    <lastmod>2023-01-29T00:00:00+00:00</lastmod>
+    <loc>/tags/linux/</loc>
+    <lastmod>2023-02-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/htb-writeups/updown/</loc>
+    <loc>/tags/path-hijacking/</loc>
+    <lastmod>2023-02-13T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/01/hackthebox-updown/</loc>
     <lastmod>2023-01-21T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/htb-writeups/shoppy/</loc>
+    <loc>/tags/cve/</loc>
+    <lastmod>2023-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/file-upload/</loc>
+    <lastmod>2023-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/filters-bypass/</loc>
+    <lastmod>2023-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/fuzzing/</loc>
+    <lastmod>2023-01-21T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/01/hackthebox-shoppy/</loc>
     <lastmod>2023-01-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/blog/</loc>
-    <lastmod>2023-01-12T00:00:00+00:00</lastmod>
+    <loc>/tags/docker-escape/</loc>
+    <lastmod>2023-01-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/</loc>
-    <lastmod>2023-01-12T00:00:00+00:00</lastmod>
+    <loc>/tags/nosqli/</loc>
+    <lastmod>2023-01-14T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/php_type_juggling/</loc>
+    <loc>/posts/2023/01/what-is-type-juggling/</loc>
     <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/ultratech/</loc>
-    <lastmod>2022-12-30T00:00:00+00:00</lastmod>
+    <loc>/tags/educative/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/anonymous/</loc>
-    <lastmod>2022-12-27T00:00:00+00:00</lastmod>
+    <loc>/series/educative-posts/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/mrrobot/</loc>
-    <lastmod>2022-12-26T00:00:00+00:00</lastmod>
+    <loc>/tags/php/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/wonderland/</loc>
-    <lastmod>2022-12-25T00:00:00+00:00</lastmod>
+    <loc>/tags/type-juggling/</loc>
+    <lastmod>2023-01-07T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/dogcat/</loc>
-    <lastmod>2022-12-24T00:00:00+00:00</lastmod>
+    <loc>/posts/2023/01/ropemporium-badchars-x64/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/thm-writeups/madeyes/</loc>
-    <lastmod>2022-12-23T00:00:00+00:00</lastmod>
+    <loc>/posts/2023/01/hackthebox-ambassador/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/post/nahamcon2022/</loc>
+    <loc>/tags/consul/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/grafana/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/linpeas/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/mysql/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/rop/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/series/ropemporium-x64-series/</loc>
+    <lastmod>2023-01-04T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/01/ropemporium-write4-x64/</loc>
+    <lastmod>2023-01-03T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/01/ropemporium-callme-x64/</loc>
+    <lastmod>2023-01-02T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/01/ropemporium-split-x64/</loc>
+    <lastmod>2023-01-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2022/12/ropemporium-ret2win-x64/</loc>
+    <lastmod>2022-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2022/12/nahamcon-ctf-2022-writeups/</loc>
     <lastmod>2022-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/about/</loc>
     <lastmod>2022-12-22T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>/archive/</loc>
+    <loc>/tags/ctf/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/series/ctf-writeups/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nahamcon/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/web/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/writeups/</loc>
+    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>
-  </url><url>
-    <loc>/tags/</loc>
   </url>
 </urlset>
