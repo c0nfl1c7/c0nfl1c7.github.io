@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Fri, 17 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇬🇧 LACTF 2023 - pwn/rickroll</title>
+      <link>/posts/2023/02/lactf-2023-pwn/rickroll/</link>
+      <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/lactf-2023-pwn/rickroll/</guid>
+      <description>Note Third pwn challenge from the LACTF 2023. It confirmed that I definitely hate format string vulnerabilities.
+Description Make your own custom rickroll with my new rickroll program! Dockerfile, rickroll, rickroll.c
+File information checksec rickroll &amp;amp;&amp;amp; file rickroll [*] &amp;#39;/home/conflict/ctfs/lactf2023/rickroll/rickroll&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x400000) rickroll: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a86d346d66fd7261ce17804cc837d0c5f1a2cfa8, for GNU/Linux 3.</description>
+    </item>
+    
     <item>
       <title>🇬🇧 LACTF 2023 - pwn/bot</title>
       <link>/posts/2023/02/lactf-2023-pwn/bot/</link>
@@ -128,17 +139,6 @@ Recon dirb http://10.10.11.183 nmap -sC -sV 10.10.11.183 3000/tcp open ppp? | fi
 Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
 Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
 Description On completing our usual checks for interesting strings and symbols in this binary we&amp;#39;re confronted with the stark truth that our favourite string &amp;#34;/bin/cat flag.</description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - callme (x64)</title>
-      <link>/posts/2023/01/ropemporium-callme-x64/</link>
-      <pubDate>Mon, 02 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/01/ropemporium-callme-x64/</guid>
-      <description>Note Troisième exo de ROPEmporium, un peu plus court que les deux précédents puisqu&amp;rsquo;il reprend des concepts qu&amp;rsquo;on connaît déjà donc pas trop de difficulté. Par contre un petit problème au niveau de la consigne il me semble.
-Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
-Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.</description>
     </item>
     
   </channel>

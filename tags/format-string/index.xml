@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>format string on conflict</title>
+    <link>/tags/format-string/</link>
+    <description>Recent content in format string on conflict</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
+    <lastBuildDate>Thu, 23 Feb 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/format-string/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇬🇧 LACTF 2023 - pwn/rickroll</title>
+      <link>/posts/2023/02/lactf-2023-pwn/rickroll/</link>
+      <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/02/lactf-2023-pwn/rickroll/</guid>
+      <description>Note Third pwn challenge from the LACTF 2023. It confirmed that I definitely hate format string vulnerabilities.
+Description Make your own custom rickroll with my new rickroll program! Dockerfile, rickroll, rickroll.c
+File information checksec rickroll &amp;amp;&amp;amp; file rickroll [*] &amp;#39;/home/conflict/ctfs/lactf2023/rickroll/rickroll&amp;#39; Arch: amd64-64-little RELRO: Partial RELRO Stack: No canary found NX: NX enabled PIE: No PIE (0x400000) rickroll: ELF 64-bit LSB executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=a86d346d66fd7261ce17804cc837d0c5f1a2cfa8, for GNU/Linux 3.</description>
+    </item>
+    
+  </channel>
+</rss>
