@@ -2,6 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>/posts/2023/03/rushctf-2023-pwn/onyo/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/posts/2023/03/rushctf-2023-pwn/poune/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
@@ -18,6 +21,9 @@
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/pwntools/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/ret2win/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/series/rushctf-2023-writeups/</loc>
@@ -39,9 +45,6 @@
     <lastmod>2023-02-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/2023/02/lactf-2023-pwn/bot/</loc>
-    <lastmod>2023-02-17T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/ret2win/</loc>
     <lastmod>2023-02-17T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/2023/02/lactf-2023-pwn/gatekeep/</loc>
