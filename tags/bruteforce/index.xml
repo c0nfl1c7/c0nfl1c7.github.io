@@ -9,11 +9,11 @@
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/bruteforce/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>🇬🇧 RushCTF 2023 - web/securevaultv2</title>
-      <link>/posts/2023/03/rushctf-2023-web/securevaultv2/</link>
+      <title>🇬🇧 RushCTF 2023 - web/secure-vault-v2</title>
+      <link>/posts/2023/03/rushctf-2023-web/secure-vault-v2/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
       
-      <guid>/posts/2023/03/rushctf-2023-web/securevaultv2/</guid>
+      <guid>/posts/2023/03/rushctf-2023-web/secure-vault-v2/</guid>
       <description>Note First web challenge from the RushCTF 2023. I liked this challege a lot and I learned a new thing about NoSQL injections. It might just be my favourite one from this CTF.
 Description My SecureVault was Hacked last year. It was because of that damm SQL language, see if you can get my password now! Goodluck Hint: SAY NO TO &amp;hellip;
 Recon Since the description talks about SQL, and the hint tells us to &amp;ldquo;say no to &amp;hellip;&amp;rdquo; we can assume that we&amp;rsquo;re going to do NoSQL Injection.</description>
