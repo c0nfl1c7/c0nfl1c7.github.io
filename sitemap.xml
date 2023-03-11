@@ -8,10 +8,28 @@
     <loc>/posts/2023/03/rushctf-2023-pwn/poune/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
+    <loc>/posts/2023/03/rushctf-2023-web/blog/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/posts/2023/03/rushctf-2023-web/securevaultv2/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/bruteforce/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
     <loc>/tags/buffer-overflow/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/lfi/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nosql/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/nosql-injection/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/</loc>
@@ -33,6 +51,9 @@
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/</loc>
+    <lastmod>2023-03-11T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>/tags/web/</loc>
     <lastmod>2023-03-11T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/posts/2023/02/lactf-2023-pwn/rickroll/</loc>
@@ -162,9 +183,6 @@
     <lastmod>2022-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/tags/re/</loc>
-    <lastmod>2022-12-22T00:00:00+00:00</lastmod>
-  </url><url>
-    <loc>/tags/web/</loc>
     <lastmod>2022-12-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>/categories/</loc>

@@ -31,6 +31,30 @@ File information checksec chall &amp;amp;&amp;amp; file chall [*] &amp;#39;/home
     </item>
     
     <item>
+      <title>🇬🇧 RushCTF 2023 - web/blog</title>
+      <link>/posts/2023/03/rushctf-2023-web/blog/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/03/rushctf-2023-web/blog/</guid>
+      <description>Note Second web challenge from the RushCTF 2023.
+Description Hey what do you think about my blog? Hint: where are password&amp;rsquo;s stored?
+Recon The main page is a beautiful default blog page, nothing much to do here
+If we look around and try to see posts, we can see that they&amp;rsquo;re fetched through a GET parameter:
+Exploitation This kind of parameter is usually vulnerable to LFI, which would allow us to render any file from the server.</description>
+    </item>
+    
+    <item>
+      <title>🇬🇧 RushCTF 2023 - web/securevaultv2</title>
+      <link>/posts/2023/03/rushctf-2023-web/securevaultv2/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/03/rushctf-2023-web/securevaultv2/</guid>
+      <description>Note First web challenge from the RushCTF 2023. I liked this challege a lot and I learned a new thing about NoSQL injections. It might just be my favourite one from this CTF.
+Description My SecureVault was Hacked last year. It was because of that damm SQL language, see if you can get my password now! Goodluck Hint: SAY NO TO &amp;hellip;
+Recon Since the description talks about SQL, and the hint tells us to &amp;ldquo;say no to &amp;hellip;&amp;rdquo; we can assume that we&amp;rsquo;re going to do NoSQL Injection.</description>
+    </item>
+    
+    <item>
       <title>🇬🇧 LACTF 2023 - pwn/rickroll</title>
       <link>/posts/2023/02/lactf-2023-pwn/rickroll/</link>
       <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
@@ -106,36 +130,6 @@ Lateral Move
 Privilege Escalation
 Note Il s&amp;rsquo;agit d&amp;rsquo;un des premiers write-ups que j&amp;rsquo;ai écrit de ma vie, j&amp;rsquo;ai attendu que la machine retire avant de le poster. C&amp;rsquo;est possible que je n&amp;rsquo;utilise pas les bons termes à certains endroit, je n&amp;rsquo;ai pas relu tout le write-up pour me corriger (j&amp;rsquo;ai bien trop la flemme).
 Vous allez aussi pouvoir voir à quoi ressemblait mon mAgniFiQuE Ubuntu à cette époque (pas si lointaine)</description>
-    </item>
-    
-    <item>
-      <title>🇬🇧 What is: &#34;Type Juggling&#34;</title>
-      <link>/posts/2023/01/what-is-type-juggling/</link>
-      <pubDate>Sat, 07 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/01/what-is-type-juggling/</guid>
-      <description>Table of contents Introduction
-Comparisons in PHP
-What causes the vulnerability
-Semi-Patched
-Better example
-How to avoid type juggling issues
-Conclusion
-Further documentation
-Prerequisites Know basic PHP Be familiar with the concept of value &amp;ldquo;types&amp;rdquo; (string, integer, float&amp;hellip;) Introduction PHP is a very famous and flexible backend programming language that aims to facilitate developer&amp;rsquo;s lives. Unfortunately, this flexibility can sometimes lead to more or less critical vulnerabilities.
-In PHP, type juggling is a functionnality that allows developers to be more flexible when they use the language, but it can also be dangerous when it&amp;rsquo;s not used carefully.</description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - badchars (x64)</title>
-      <link>/posts/2023/01/ropemporium-badchars-x64/</link>
-      <pubDate>Wed, 04 Jan 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2023/01/ropemporium-badchars-x64/</guid>
-      <description>Note Cinquièment exo de ROPemporium, je le trouve moins sympa que les autres. Il reprend le principe du challenge précédent, mais il introduit un nouveau gadget pour contourner le &amp;ldquo;filtre&amp;rdquo;: le xor
-Comme d&amp;rsquo;habitude, si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
-Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.
-Et je vous conseille fortement de lire l&amp;rsquo;exercice précédent pour mieux comprendre ce que je fais ici puisque la méchanique principale est la même.</description>
     </item>
     
   </channel>

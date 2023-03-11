@@ -9,11 +9,47 @@
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
     <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Bruteforce</title>
+      <link>/tags/bruteforce/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/bruteforce/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>buffer overflow</title>
       <link>/tags/buffer-overflow/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>/tags/buffer-overflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LFI</title>
+      <link>/tags/lfi/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/lfi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NoSQL</title>
+      <link>/tags/nosql/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nosql/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>NoSQL Injection</title>
+      <link>/tags/nosql-injection/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/nosql-injection/</guid>
       <description></description>
     </item>
     
@@ -45,56 +81,20 @@
     </item>
     
     <item>
+      <title>web</title>
+      <link>/tags/web/</link>
+      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>format string</title>
       <link>/tags/format-string/</link>
       <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
       
       <guid>/tags/format-string/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>burpsuite</title>
-      <link>/tags/burpsuite/</link>
-      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/burpsuite/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>command injection</title>
-      <link>/tags/command-injection/</link>
-      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/command-injection/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>js</title>
-      <link>/tags/js/</link>
-      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/js/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>linux</title>
-      <link>/tags/linux/</link>
-      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/linux/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>path hijacking</title>
-      <link>/tags/path-hijacking/</link>
-      <pubDate>Mon, 13 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/path-hijacking/</guid>
       <description></description>
     </item>
     
