@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pwn/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/pwn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇫🇷 ROPEmporium - ret2csu (x64)</title>
+      <link>/posts/2023/03/ropemporium-ret2csu-x64/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/03/ropemporium-ret2csu-x64/</guid>
+      <description>Note Dernier exercice de ROPEmporium, j&amp;rsquo;ai effectivement sauté fluff et pivot puisque je voulais apprendre cette technique car je l&amp;rsquo;ai rencontrée lors d&amp;rsquo;un CTF. Je reviendrai peut-être sur pivot mais je ne pense pas faire fluff puisqu&amp;rsquo;il est bien trop chiant.
+Je vais essayer d&amp;rsquo;expliquer au mieux ce que j&amp;rsquo;ai compris du ret2csu.
+Comme d&amp;rsquo;habitude, si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.</description>
+    </item>
+    
     <item>
       <title>🇬🇧 RushCTF 2023 - pwn/onyo</title>
       <link>/posts/2023/03/rushctf-2023-pwn/onyo/</link>
@@ -107,16 +118,6 @@ Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dan
       <guid>/posts/2023/01/ropemporium-split-x64/</guid>
       <description>Note Deuxième exercice de ROPEmporium, un tout petit peu plus complexe que le précédent mais il reste très accessible. Je vais essayer une fois de plus d&amp;rsquo;expliquer le plus clairement possible ce que j&amp;rsquo;ai fait pour le réussir. Si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.
 Si vous ne comprenez pas quelque chose, je vous invite à regarder la série dans l&amp;rsquo;ordre.</description>
-    </item>
-    
-    <item>
-      <title>🇫🇷 ROPEmporium - ret2win (x64)</title>
-      <link>/posts/2022/12/ropemporium-ret2win-x64/</link>
-      <pubDate>Sat, 31 Dec 2022 00:00:00 +0000</pubDate>
-      
-      <guid>/posts/2022/12/ropemporium-ret2win-x64/</guid>
-      <description>Note Je suis actuellement entrain d&amp;rsquo;apprendre le pwn donc il est possible que je fasse des erreurs ou que je dise des choses fausses dans ce post, si vous en voyez n&amp;rsquo;hésitez pas à me contacter sur discord.
-File information Avant de commencer à regarder dans l&amp;rsquo;executable, il faut savoir à quoi on s&amp;rsquo;attaque, on va utiliser file pour avoir des informations sur le fichier, puis checksec pour voir les éventuelles sécuritées avec lesquelles il a été compilé</description>
     </item>
     
   </channel>

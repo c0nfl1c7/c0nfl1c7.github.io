@@ -7,7 +7,34 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Sat, 11 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>pwn</title>
+      <link>/tags/pwn/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/pwn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ret2csu</title>
+      <link>/tags/ret2csu/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/ret2csu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rop</title>
+      <link>/tags/rop/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/tags/rop/</guid>
+      <description></description>
+    </item>
+    
     <item>
       <title>Bruteforce</title>
       <link>/tags/bruteforce/</link>
@@ -54,15 +81,6 @@
     </item>
     
     <item>
-      <title>pwn</title>
-      <link>/tags/pwn/</link>
-      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/pwn/</guid>
-      <description></description>
-    </item>
-    
-    <item>
       <title>pwntools</title>
       <link>/tags/pwntools/</link>
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
@@ -77,24 +95,6 @@
       <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
       
       <guid>/tags/ret2win/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>web</title>
-      <link>/tags/web/</link>
-      <pubDate>Sat, 11 Mar 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>format string</title>
-      <link>/tags/format-string/</link>
-      <pubDate>Thu, 23 Feb 2023 00:00:00 +0000</pubDate>
-      
-      <guid>/tags/format-string/</guid>
       <description></description>
     </item>
     

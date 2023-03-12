@@ -7,7 +7,18 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>&lt;a href=&#34;https://creativecommons.org/licenses/by-nc/4.0/&#34; target=&#34;_blank&#34; rel=&#34;noopener&#34;&gt;CC BY-NC 4.0&lt;/a&gt;</copyright>
-    <lastBuildDate>Wed, 04 Jan 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 12 Mar 2023 00:00:00 +0000</lastBuildDate><atom:link href="/tags/rop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>🇫🇷 ROPEmporium - ret2csu (x64)</title>
+      <link>/posts/2023/03/ropemporium-ret2csu-x64/</link>
+      <pubDate>Sun, 12 Mar 2023 00:00:00 +0000</pubDate>
+      
+      <guid>/posts/2023/03/ropemporium-ret2csu-x64/</guid>
+      <description>Note Dernier exercice de ROPEmporium, j&amp;rsquo;ai effectivement sauté fluff et pivot puisque je voulais apprendre cette technique car je l&amp;rsquo;ai rencontrée lors d&amp;rsquo;un CTF. Je reviendrai peut-être sur pivot mais je ne pense pas faire fluff puisqu&amp;rsquo;il est bien trop chiant.
+Je vais essayer d&amp;rsquo;expliquer au mieux ce que j&amp;rsquo;ai compris du ret2csu.
+Comme d&amp;rsquo;habitude, si j&amp;rsquo;ai fait des erreurs, n&amp;rsquo;hésitez pas à me contacter sur discord pour me le dire.</description>
+    </item>
+    
     <item>
       <title>🇫🇷 ROPEmporium - badchars (x64)</title>
       <link>/posts/2023/01/ropemporium-badchars-x64/</link>
